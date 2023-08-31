@@ -32,7 +32,6 @@
 body {
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
-    background-color: #000;
 }
 
 h1,
@@ -204,7 +203,6 @@ button:focus {
 .btn-custom:hover,
 .open > .dropdown-toggle.btn-custom {
     color: #f3f3f3;
-    
 }
 
 .btn-outline-custom {
@@ -262,7 +260,7 @@ button:focus {
 
 .custom-nav .navbar-brand .logo-light,
 .custom-nav .navbar-brand .logo-dark {
-    height: 90px;
+    height: 27px;
 }
 
 .logo .logo-light {
@@ -308,7 +306,7 @@ button:focus {
 =============================*/
 
 .header-bg-img {
-    background-image: url(../images/Home_image.png);
+    background-image: url(../images/hero-bg.jpg);
     position: relative;
     background-size: cover;
     background-position: center center;
@@ -319,17 +317,14 @@ button:focus {
 }
 
 .header-name {
-    font-size: 60px;
-    color:  #FABE07;
+    font-size: 54px;
 }
 
 .header-desc {
-    max-width: 450px;
+    max-width: 500px;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.75) !important;
 }
-
-
 
 .scroll_down {
     position: absolute;
@@ -395,11 +390,10 @@ button:focus {
   position: absolute;
   bottom: 0;
   width: 100%;
-  
 }
 
 .wave_sec svg {
-    background-color:none;
+  height: 180px;
 }
 
 /*===========================
@@ -417,10 +411,6 @@ button:focus {
     line-height: 38px;
     transition: all 0.5s;
     text-align: center;
-}
-
-.section_me{
-    background-color:  white;
 }
 
 
@@ -654,11 +644,11 @@ button:focus {
 }
 
 .copyright_content{
-    color: #FABE07;
+    color: #ababab;
 }
 
 .footer-alt li a i{
-    color: #FABE07;
+    color: #ababab;
     transition: all 0.5s;
 }
 
