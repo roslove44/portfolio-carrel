@@ -584,6 +584,11 @@ button:focus {
     font-size: 14px;
 }
 
+.work_box .work_detail p a {
+    color: white;
+    font-size: 24px;
+}
+
 .work_box:hover .work_detail {
     top: 50%;
     transform: translate(0, -50%);
