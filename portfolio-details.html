@@ -30,6 +30,30 @@
     <!-- Template Main CSS File -->
     <link href="css/portfolio/style.css" rel="stylesheet">
     <link href="css/color/default.css" rel="stylesheet">
+    <style>
+        .btn-dark-mode {
+            width: 65px;
+            height: 30px;
+            background-color: #CCC;
+            border-radius: 25px;
+            padding: 1px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            transition: 1s;
+            margin-left: 10px;
+        }
+
+        .slider-mode {
+            width: 30px;
+            height: 30px;
+            background-color: #FFF;
+            border-radius: 50%;
+            margin: 2px;
+            transition: 1s;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +75,15 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <a href="#" class="get-started-btn scrollto"></a>
+            <!-- <a href="#" class="get-started-btn scrollto">
+                <div class="btn-dark-mode" onclick="darkMode()">
+                    <div class="slider-mode"> </div>
+                </div>
+            </a>-->
+
+            <div class="btn-dark-mode scrollto" onclick="darkMode()">
+                <div class="slider-mode"> </div>
+            </div>
         </div>
     </header><!-- End Header -->
 
@@ -107,12 +139,12 @@
                             </ul>
                         </div>
                         <div class="portfolio-description">
-                            <h2>This is an example of portfolio detail</h2>
+                            <h2>Couverture Festichill</h2>
                             <p>
-                                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi
-                                labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque
-                                itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur
-                                dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                                Création d'affiches publicitaires pour Festicchill 2022 2023 Lorem ipsum, dolor sit amet
+                                consectetur adipisicing elit. Sapiente a possimus ut explicabo illo? Harum recusandae
+                                hic assumenda dolor soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Ratione odio voluptas alias incidunt laudantium iste est repellendus nemo sint corrupti.
                             </p>
                         </div>
                     </div>
@@ -180,6 +212,23 @@
         const currentYear = date.getFullYear();
         const copyright = document.getElementById("copyright");
         copyright.innerText = currentYear + " Réalisé par Rost Digital Services"
+    </script>
+
+    <script>
+        let darkModeOn = false;
+        let btnDarkMode = document.querySelector('.btn-dark-mode');
+
+        function darkMode() {
+            if (darkModeOn === false) {
+                document.body.style.cssText = "background-color:#000000; color: #FFFFFF; transition: 1s;";
+                btnDarkMode.style.cssText = "background-color: gold; justify-content: flex-end; transition: 1s;";
+                darkModeOn = true;
+            } else {
+                document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
+                btnDarkMode.style.cssText = "background-color: #CCC; justify-content: flex-start; transition: 1s;";
+                darkModeOn = false;
+            }
+        }
     </script>
 
 </body>

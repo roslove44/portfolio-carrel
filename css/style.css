@@ -1,26 +1,8 @@
-/*-----------------------------------------------------------
-* Template Name    : Kerri | Responsive Bootstrap 5 Personal Template
-* Author           : SRBThemes
-* Version          : 1.0.0
-* Created          : March 2018
-* File Description : Main css file of the template
-*------------------------------------------------------------
-*/
-
-/***********************
-    1.BASIC
-    2.HELPER
-    3.NAVBAR
-    4.HOME
-    5.ABOUT 
-    6.SERVICES
-    7.CLIENT
-    8.WORK
-    9.BLOG
-    10.CONTACT
-    11.FOOTER
-    12.RESPONSIVE
-************************/
+:root {
+    --color-principal: #FEAB00;
+    --color-principal-hover: #c28306b7;
+    --tag: hsl(214, 100%, 59%);
+}
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700');
 /* @import url('https: //fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i'); */
@@ -231,6 +213,40 @@ button:focus {
     width: 100%;
     height: 100%;
 }
+
+.breadcrumbs {
+    padding: 15px 0;
+    background: #2b2b2b;
+    min-height: 40px;
+    margin-top: 65px;
+    color: #fff;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: var(--color-principal);
+    content: "/";
+}
+
+.breadcrumbs ol a {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+.breadcrumbs ol li+li {
+    padding-left: 10px;
+}
+
 
 
 /*==========================
