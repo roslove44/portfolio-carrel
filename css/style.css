@@ -214,41 +214,91 @@ button:focus {
     height: 100%;
 }
 
-.breadcrumbs {
-    padding: 15px 0;
-    background: #2b2b2b;
-    min-height: 40px;
-    margin-top: 65px;
-    color: #fff;
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: var(--color-principal) !important;
+    content: var(--bs-breadcrumb-divider, "/");
 }
 
-.breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
+.portfolio-info {
+    padding: 30px;
+    box-shadow: 0px 0 30px rgba(17, 17, 17, 0.08);
+}
+
+.portfolio-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.portfolio-info ul {
     list-style: none;
-    padding: 0 0 10px 0;
-    margin: 0;
-    font-size: 14px;
+    padding: 0;
+    /* font-size: 15px; */
 }
 
-.breadcrumbs ol li+li::before {
-    display: inline-block;
-    padding-right: 10px;
+.portfolio-info ul li+li {
+    margin-top: 10px;
+}
+
+.portfolio-info ul li a {
     color: var(--color-principal);
-    content: "/";
 }
 
-.breadcrumbs ol a {
-    color: #aaaaaa;
-    text-decoration: none;
+.tag {
+    color: black;
+    font-weight: bolder;
+    font-size: smaller;
+    font-style: italic;
+    text-align: end;
 }
 
-.breadcrumbs ol li+li {
-    padding-left: 10px;
+.portfolio-description {
+    padding-top: 30px;
 }
 
+.portfolio-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
 
+.portfolio-description p {
+    padding: 0;
+    font-family: 'Nunito';
+}
 
+ .portfolio-details-slider img {
+    width: 100%;
+}
+
+.portfolio-details-slider .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+}
+
+.portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid var(--color-principal);
+}
+
+.portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-principal);
+}
+
+#copyright {
+    color: var(--color-principal);
+}
+
+.mbri-paperclip {
+    color: var(--color-principal);
+}
 /*==========================
         3.NAVBAR CUSTOM
 ============================*/
@@ -276,7 +326,7 @@ button:focus {
 
 .custom-nav .navbar-brand .logo-light,
 .custom-nav .navbar-brand .logo-dark {
-    height: 27px;
+    max-height: 40px;
 }
 
 .logo .logo-light {
@@ -309,7 +359,7 @@ button:focus {
 .custom-nav.stickyadd {
     background-color: #fff !important;
     box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.050980392156862744);
-    padding: 15px 0px;
+    padding: 20px 0px;
 }
 
 .custom-nav.stickyadd .navbar-nav li a {

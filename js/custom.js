@@ -17,7 +17,7 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 (window.onscroll = function () {
   window.pageYOffset > 200
     ? navbar.classList.add("stickyadd")
-    : navbar.classList.remove("stickyaddx");
+    : navbar.classList.remove("stickyadd");
 }),
   $(".owl-carousel").owlCarousel({
     loop: !0,
