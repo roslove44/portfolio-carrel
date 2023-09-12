@@ -1,29 +1,11 @@
-/*-----------------------------------------------------------
-* Template Name    : Kerri | Responsive Bootstrap 5 Personal Template
-* Author           : SRBThemes
-* Version          : 1.0.0
-* Created          : March 2018
-* File Description : Main css file of the template
-*------------------------------------------------------------
-*/
-
-/***********************
-    1.BASIC
-    2.HELPER
-    3.NAVBAR
-    4.HOME
-    5.ABOUT 
-    6.SERVICES
-    7.CLIENT
-    8.WORK
-    9.BLOG
-    10.CONTACT
-    11.FOOTER
-    12.RESPONSIVE
-************************/
+:root {
+    --color-principal: #FEAB00;
+    --color-principal-hover: #c28306b7;
+    --tag: hsl(214, 100%, 59%);
+}
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700');
-
+/* @import url('https: //fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i'); */
 
 /*======================
         1.BASIC
@@ -32,7 +14,6 @@
 body {
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
-    background-color: #000;
 }
 
 h1,
@@ -204,7 +185,6 @@ button:focus {
 .btn-custom:hover,
 .open > .dropdown-toggle.btn-custom {
     color: #f3f3f3;
-    
 }
 
 .btn-outline-custom {
@@ -234,7 +214,91 @@ button:focus {
     height: 100%;
 }
 
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: var(--color-principal) !important;
+    content: var(--bs-breadcrumb-divider, "/");
+}
 
+.portfolio-info {
+    padding: 30px;
+    box-shadow: 0px 0 30px rgba(17, 17, 17, 0.08);
+}
+
+.portfolio-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.portfolio-info ul {
+    list-style: none;
+    padding: 0;
+    /* font-size: 15px; */
+}
+
+.portfolio-info ul li+li {
+    margin-top: 10px;
+}
+
+.portfolio-info ul li a {
+    color: var(--color-principal);
+}
+
+.tag {
+    color: black;
+    font-weight: bolder;
+    font-size: smaller;
+    font-style: italic;
+    text-align: end;
+}
+
+.portfolio-description {
+    padding-top: 30px;
+}
+
+.portfolio-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.portfolio-description p {
+    padding: 0;
+    font-family: 'Nunito';
+}
+
+ .portfolio-details-slider img {
+    width: 100%;
+}
+
+.portfolio-details-slider .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+}
+
+.portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid var(--color-principal);
+}
+
+.portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-principal);
+}
+
+#copyright {
+    color: var(--color-principal);
+}
+
+.mbri-paperclip {
+    color: var(--color-principal);
+}
 /*==========================
         3.NAVBAR CUSTOM
 ============================*/
@@ -262,7 +326,7 @@ button:focus {
 
 .custom-nav .navbar-brand .logo-light,
 .custom-nav .navbar-brand .logo-dark {
-    height: 90px;
+    max-height: 40px;
 }
 
 .logo .logo-light {
@@ -295,7 +359,7 @@ button:focus {
 .custom-nav.stickyadd {
     background-color: #fff !important;
     box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.050980392156862744);
-    padding: 15px 0px;
+    padding: 20px 0px;
 }
 
 .custom-nav.stickyadd .navbar-nav li a {
@@ -308,7 +372,7 @@ button:focus {
 =============================*/
 
 .header-bg-img {
-    background-image: url(../images/Home_image.png);
+    background-image: url(../images/hero-bg.jpg);
     position: relative;
     background-size: cover;
     background-position: center center;
@@ -319,17 +383,14 @@ button:focus {
 }
 
 .header-name {
-    font-size: 60px;
-    color:  #FABE07;
+    font-size: 54px;
 }
 
 .header-desc {
-    max-width: 450px;
+    max-width: 500px;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.75) !important;
 }
-
-
 
 .scroll_down {
     position: absolute;
@@ -395,11 +456,10 @@ button:focus {
   position: absolute;
   bottom: 0;
   width: 100%;
-  
 }
 
 .wave_sec svg {
-    background-color:none;
+  height: 180px;
 }
 
 /*===========================
@@ -417,10 +477,6 @@ button:focus {
     line-height: 38px;
     transition: all 0.5s;
     text-align: center;
-}
-
-.section_me{
-    background-color:  white;
 }
 
 
@@ -594,6 +650,11 @@ button:focus {
     font-size: 14px;
 }
 
+.work_box .work_detail p a {
+    color: white;
+    font-size: 24px;
+}
+
 .work_box:hover .work_detail {
     top: 50%;
     transform: translate(0, -50%);
@@ -654,11 +715,11 @@ button:focus {
 }
 
 .copyright_content{
-    color: #FABE07;
+    color: #ababab;
 }
 
 .footer-alt li a i{
-    color: #FABE07;
+    color: #ababab;
     transition: all 0.5s;
 }
 
