@@ -68,3 +68,18 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
   $(".back_top").click(function () {
     return $("html, body").animate({ scrollTop: 0 }, 1000), !1;
   });
+
+const about = document.querySelector("#about");
+const checkbox = document.querySelector("#checkbox");
+const wave_img = document.querySelector("#wave_img");
+
+// Ajoutez un écouteur d'événements "change" à la case à cocher
+checkbox.addEventListener("change", function () {
+  if (checkbox.checked) {
+    about.style.backgroundColor = "black";
+    wave_img.style.fill = "black";
+  } else {
+    about.style.backgroundColor = "";
+    wave_img.style.fill = "black";
+  }
+});

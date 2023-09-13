@@ -1,7 +1,9 @@
 :root {
-    --color-principal: #FEAB00;
+    --color-principal: #FFC700;
     --color-principal-hover: #c28306b7;
     --tag: hsl(214, 100%, 59%);
+    --text-header: white;
+    --text-header-desc : rgba(255, 255, 255, 0.75);
 }
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700');
@@ -23,6 +25,10 @@ h4,
 h5,
 h6 {
     font-family: 'Montserrat', sans-serif;
+}
+
+.custom-title {
+    color: var(--color-principal);
 }
 
 a,
@@ -299,6 +305,47 @@ button:focus {
 .mbri-paperclip {
     color: var(--color-principal);
 }
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.checkbox-label .ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.checkbox-label .ball {
+    transform: translateX(24px);
+}
 /*==========================
         3.NAVBAR CUSTOM
 ============================*/
@@ -380,6 +427,7 @@ button:focus {
 
 .header-content {
     max-width: 800px;
+    color: var(--text-header);
 }
 
 .header-name {
@@ -389,7 +437,7 @@ button:focus {
 .header-desc {
     max-width: 500px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: var(--text-header-desc) !important;
 }
 
 .scroll_down {
