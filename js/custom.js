@@ -80,6 +80,6 @@ checkbox.addEventListener("change", function () {
     wave_img.style.fill = "black";
   } else {
     about.style.backgroundColor = "";
-    wave_img.style.fill = "black";
+    wave_img.style.fill = "";
   }
 });
