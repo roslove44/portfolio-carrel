@@ -1,6 +1,7 @@
 :root {
     --color-principal: #FFC700;
     --color-principal-hover: #c28306b7;
+    --color-secondary: #2F2F2F;
     --tag: hsl(214, 100%, 59%);
     --text-header: white;
     --text-header-desc : rgba(255, 255, 255, 0.75);
@@ -533,7 +534,8 @@ button:focus {
 =============================*/
 
 .services-boxes {
-    border: 1px solid #e8e8e8;
+    /* border: 1px solid #e8e8e8; */
+    border: 1px solid transparent;
 }
 
 .services-boxes .services-boxes-icon i {

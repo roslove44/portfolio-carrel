@@ -40,6 +40,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
 </head>
 
 <body>
@@ -80,6 +82,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#contact">Contact</a>
                     </li>
+                    <li class="nav-item d-flex flex-column align-items-center">
+                        <div class="mt-1">
+                            <input type="checkbox" class="checkbox align-self-center" id="checkbox">
+                            <label for="checkbox" class="checkbox-label">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                                <span class="ball"></span>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -110,7 +122,7 @@
     <!-- END HOME -->
 
     <!-- START ABOUT -->
-    <section class="section" id="portfolio">
+    <section class="section" id="portfolio" data-turn-bg-secondary>
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-8">
@@ -130,20 +142,20 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="portfolio-info">
-                        <h3>Informations sur le Projet</h3>
-                        <ul>
+                        <h3 data-turn-text-white>Informations sur le Projet</h3>
+                        <ul data-turn-text-white>
                             <li><strong>Catégorie</strong>: Web design</li>
                             <li><strong>Client</strong>: ASU Company</li>
                             <li><strong>Période de réalisation</strong>: March, 2020</li>
                             <li><strong>Lien du Projet</strong>: <a href="#">www.example.com</a></li>
-                            <li class="tag">
+                            <li class="tag" data-turn-text-white>
                                 <span>#design #web #flyers </span>
                             </li>
                         </ul>
                     </div>
                     <div class="portfolio-description">
-                        <h2>Couverture Festichill</h2>
-                        <p>
+                        <h2 data-turn-text-principal>Couverture Festichill</h2>
+                        <p data-turn-text-white>
                             Création d'affiches publicitaires pour Festicchill 2022 2023 Lorem ipsum, dolor sit amet
                             consectetur adipisicing elit. Sapiente a possimus ut explicabo illo? Harum recusandae
                             hic assumenda dolor soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -231,6 +243,9 @@
 
     <!-- Magnific Popup Js -->
     <script src="js/jquery.magnific-popup.min.js"></script>
+
+    <!-- Dark Mode Js -->
+    <script src="js/dark_mode.js"></script>
 
     <!-- Custom Js -->
     <script src="js/custom.js"></script>
