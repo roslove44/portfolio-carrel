@@ -54,12 +54,14 @@ var scrollSpy = new bootstrap.ScrollSpy(document.body, {
         );
       });
   }),
-  $(".img-zoom").magnificPopup({
-    type: "image",
-    closeOnContentClick: !0,
-    mainClass: "mfp-fade",
-    gallery: { enabled: !0, navigateByImgClick: !0, preload: [0, 1] },
-  }),
+  // Désactivez le popup pour les éléments avec la classe "img-zoom"
+  $(".img-zoom").off("click"),
+  // $(".img-zoom").magnificPopup({
+  //   type: "image",
+  //   closeOnContentClick: 0,
+  //   mainClass: "mfp-fade",
+  //   gallery: { enabled: !0, navigateByImgClick: !0, preload: [0, 1] },
+  // }),
   $(window).on("scroll", function () {
     $(this).scrollTop() > 100
       ? $(".back_top").fadeIn()
