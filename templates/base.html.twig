@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ak58graph{% endblock %}</title>
+    <meta name="description" content="Premium Responsive Bootstrap 5 Personal Template" />
+    <meta name="keywords" content="bootstrap 5, premium, cv, personal, Portfolio, multipurpose" />
+    <meta name="author" content="Rost Digital Services" />
+    <link rel="icon" href="{{asset('assets/images/favicon.png')}}">
+    {% block stylesheets %}
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+
+    <!-- Materialdesign icons Css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/materialdesignicons.min.css')}}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.min.css')}}">
+
+    <!-- Animate Css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.min.css')}}">
+
+    <!-- Magnific-popup -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/magnific-popup.css')}}">
+
+    <!-- Mobirise icons Css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/mobiriseicons.css')}}">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/color/default.css')}}" id="option-color">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">Loading...</div>
+        </div>
+    </div>
+
+    {% include "_partials/_nav.html.twig" %}
+    {% block body %}{% endblock %}
+
+    {% include "_partials/_footer.html.twig" %}
+    <!--All Javascript -->
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
+    <!-- Text Rotate -->
+    <script src="{{asset('assets/js/jquery.simple-text-rotator.js')}}"></script>
+
+    <!-- Owl Carousel -->
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+
+    <!-- Wavify JS -->
+    <script src="{{asset('assets/js/wavify.js')}}"></script>
+    <script src="{{asset('assets/js/TweenMax.min.js')}}"></script>
+
+    <!-- jQuery Wavify JS -->
+    <script src="{{asset('assets/js/jquery.wavify.js')}}"></script>
+
+    <!-- Switcher Js -->
+    <script src="{{asset('assets/js/switcher.js')}}"></script>
+
+    <!-- Work Filter -->
+    <script src="{{asset('assets/js/isotope.js')}}"></script>
+
+    <!-- Magnific Popup Js -->
+    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+
+    <!-- Dark Mode Js -->
+    <script src="{{asset('assets/js/dark_mode.js')}}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{asset('assets/js/custom.js')}}"></script>
+
+    <script>
+        $(".simple-text-rotate").textrotator({
+            animation: "fade",
+            speed: 3500
+        });
+        if ($('#wave_img').length) {
+            $('#wave_img').wavify({
+                height: 100,
+                bones: 3,
+                amplitude: 50,
+                color: '#fff',
+                speed: .25
+            });
+        }
+    </script>
+    <script>
+        const date = new Date();
+        currentYear = date.getFullYear();
+        const copyright = document.getElementById("copyright");
+        copyright.innerText = currentYear + " Réalisé par Rost Digital Services"
+    </script>
+</body>
+
+</html>
