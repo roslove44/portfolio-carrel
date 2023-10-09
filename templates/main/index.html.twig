@@ -406,41 +406,45 @@
         <div class="row mt-5">
             <div class="col-lg-12">
                 <div class="form-kerri contact_form">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group mt-2">
-                                    <input type="text" class="form-control" placeholder="Votre nom..."
-                                        aria-label="First name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group mt-2">
-                                    <input type="email" class="form-control" id="inputEmail4"
-                                        placeholder="Votre email...">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                    {{form_start(contactForm)}}
+                    <div class="row">
+                        <div class="col-12">
                             <div class="form-group mt-2">
-                                <input type="text" class="form-control" placeholder="Sujet.." aria-label="Subject">
+                                {{form_row(contactForm.full_name)}}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group mt-2">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
-                                        placeholder="Votre Message..."></textarea>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                {{form_row(contactForm.tel)}}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 text-end mt-2">
-                                <input type="submit" id="submit" name="send" class="btn btn-custom text-uppercase"
-                                    value="Envoyez">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                {{form_row(contactForm.client_email)}}
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="form-group mt-2">
+                            {{form_row(contactForm.subject)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group mt-2">
+                                {{form_row(contactForm.message)}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-end mt-2">
+                            <input type="submit" id="submit" name="send" class="btn btn-custom text-uppercase"
+                                value="Envoyez">
+                        </div>
+                    </div>
+                    {{form_end(contactForm)}}
                 </div>
             </div>
         </div>
