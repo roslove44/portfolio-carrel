@@ -1,13 +1,17 @@
+{% for label, messages in app.flashes %}
+{% for message in messages %}
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-            <img src="{{asset('assets/images/logo black.png')}}" class="rounded me-2 w-25" alt="logo ak58graph">
+            <img src="{{ asset('assets/images/logo black.png') }}" class="rounded me-2 w-25" alt="logo ak58graph">
             <strong class="me-auto">ak58graph</strong>
             <small class="text-success">now</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
+        <div class="toast-body text-{{label}}">
+            {{message}}
         </div>
     </div>
 </div>
+{% endfor %}
+{% endfor %}
