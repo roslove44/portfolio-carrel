@@ -27,6 +27,7 @@ class MainController extends AbstractController
                 $contact,
                 $contact['client_email']
             );
+            $this->addFlash("success", "Merci pour votre message. Il est bien arrivé dans notre boîte de réception. Nous reviendrons vers vous sous peu.");
             return $this->redirectToRoute('app_main');
         }
         return $this->render('main/index.html.twig', [
