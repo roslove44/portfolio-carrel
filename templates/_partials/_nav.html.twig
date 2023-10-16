@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg custom-nav navbar-light fixed-top sticky">
     <div class="container">
         <a class="navbar-brand pt-0 logo me-auto" href="#">
-            <img src="images/ak58.png" alt="" class="img-fluid logo-light w-100">
-            <img src="images/logo black.png" alt="" class="img-fluid logo-dark">
+            <img src="{{asset('assets/images/ak58.png')}}" alt="" class="img-fluid logo-light w-100">
+            <img src="{{asset('assets/images/logo black.png')}}" alt="" class="img-fluid logo-dark">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,19 +12,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto" id="main_nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Accueil</a>
+                    <a class="nav-link" href="{{path('app_main')}}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">À propos</a>
+                    <a class="nav-link" href="{{path('app_main')}}#about">À propos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#services">Services</a>
+                    <a class="nav-link" href="{{path('app_main')}}#services">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                    <a class="nav-link 
+                    {% if app.current_route == 'app_main' %}
+                    {% else %}
+                        active
+                    {% endif %}" href="#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link" href="{{path('app_main')}}#contact">Contact</a>
                 </li>
                 <li class="nav-item d-flex flex-column align-items-lg-center">
                     <div class="mt-1">

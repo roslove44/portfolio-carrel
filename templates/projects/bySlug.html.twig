@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ak58graph{% endblock %}
+
+{% block body %}
+<!-- START HOME -->
+<section class="section header-bg-img h-10vh align-items-center d-flex pb-0">
+    <div class="bg-overlay"></div>
+    <div class="container z-index">
+        <div class="row justify-content-start">
+            <div class="col-lg-12">
+                <div class="header-content">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{path('app_main')}}" class=" text-white">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+                        </ol>
+                    </nav>
+
+                    <h4 class="text-white">ak58graph | Projet ENEAM 360</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END HOME -->
+
+<!-- START WORK -->
+<section class="section" id="portfolio" data-turn-bg-secondary>
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                            <img src="{{asset('assets/images/hero-bg.jpg')}}" alt="" class="rounded-2">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="{{asset('assets/images/hero-bg.jpg')}}" alt="" class="rounded-2">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="portfolio-info rounded-2">
+                    <h3 data-turn-text-white>Informations sur le Projet</h3>
+                    <ul data-turn-text-white>
+                        <li><strong>Catégorie</strong>: Web design</li>
+                        <li><strong>Client</strong>: ASU Company</li>
+                        <li><strong>Période de réalisation</strong>: March, 2020</li>
+                        <li><strong>Lien du Projet</strong>: <a href="#">www.example.com</a></li>
+                        <li class="tag" data-turn-text-white>
+                            <span>#design #web #flyers </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="portfolio-description">
+                    <h2 data-turn-text-principal>Couverture Festichill</h2>
+                    <p data-turn-text-white>
+                        Création d'affiches publicitaires pour Festicchill 2022 2023 Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Sapiente a possimus ut explicabo illo? Harum recusandae
+                        hic assumenda dolor soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Ratione odio voluptas alias incidunt laudantium iste est repellendus nemo sint corrupti.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WORK -->
+{% endblock %}
+
+{% block javascripts %}
+<script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+        var mySwiper = new Swiper(".swiper", {
+            // Options de configuration de Swiper
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 1000, // Délai en millisecondes entre les diapositives (par exemple, 3000ms = 3 secondes)
+                disableOnInteraction: false, // Laisser le défilement automatique continuer même si l'utilisateur interagit avec Swiper
+            },
+        });
+    });
+</script>
+{% endblock %}
+
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{% endblock %}
