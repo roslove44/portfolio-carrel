@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ak58graph{% endblock %}</title>
+    <meta name="description" content="Premium Responsive Bootstrap 5 Personal Template" />
+    <meta name="keywords" content="bootstrap 5, premium, cv, personal, Portfolio, multipurpose" />
+    <meta name="author" content="Rost Digital Services" />
+    <link rel="icon" href="{{asset('assets/images/favicon.png')}}">
+    {% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+                <h1><a href="index.html" class="logo">Portfolio <span>ak58graph</span></a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="#"><span class="fa fa-home mr-3"></span> Tableau de bord</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-briefcase mr-3"></span> Projets</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-user mr-3"></span> About</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-briefcase mr-3"></span> Projets</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Blog</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-cogs mr-3"></span> Services</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
+                    </li>
+                    <li>
+                        <a href="{{path('app_logout')}}"><span class="fa fa-sign-out mr-3"></span> Déconnexion</a>
+                    </li>
+                </ul>
+
+
+                <div class="footer">
+                    <p>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> Réalisé par <a
+                            href="https://rostand-migan.com" target="_blank" class="text-white">Rost Digital Services
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </nav>
+        <!-- Page Content  -->
+        {% block body %}{% endblock %}
+    </div>
+
+    {% include "_partials/_flash.html.twig" %}
+    {% include "_partials/_footer.html.twig" %}
+
+
+    <!--All Javascript -->
+    <script src="{{asset('admin/js/jquery.min.js')}}"></script>
+    <script src="{{asset('admin/js/popper.js')}}"></script>
+    <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin/js/main.js')}}"></script>
+    <script>
+        const date = new Date();
+        currentYear = date.getFullYear();
+        const copyright = document.getElementById("copyright");
+        copyright.innerText = currentYear + " Réalisé par Rost Digital Services"
+    </script>
+</body>
+
+</html>
