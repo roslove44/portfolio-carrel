@@ -34,15 +34,14 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $proj_image = null;
 
-    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Tags::class)]
-    private Collection $tags;
-
     #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class)]
     private Collection $images;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $tags = null;
+
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
         $this->images = new ArrayCollection();
     }
 
@@ -124,36 +123,6 @@ class Projects
     }
 
     /**
-     * @return Collection<int, Tags>
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
-
-    public function addTag(Tags $tag): static
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
-            $tag->setProjects($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(Tags $tag): static
-    {
-        if ($this->tags->removeElement($tag)) {
-            // set the owning side to null (unless already changed)
-            if ($tag->getProjects() === $this) {
-                $tag->setProjects(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Images>
      */
     public function getImages(): Collection
@@ -179,6 +148,18 @@ class Projects
                 $image->setProjects(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTags(): ?array
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?array $tags): static
+    {
+        $this->tags = $tags;
 
         return $this;
     }
