@@ -37,12 +37,14 @@ class Projects
     #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class)]
     private Collection $images;
 
-    #[ORM\Column(nullable: true)]
-    private ?array $tags = null;
+    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'projects')]
+    private Collection $tags;
+
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,14 +154,29 @@ class Projects
         return $this;
     }
 
-    public function getTags(): ?array
+    /**
+     * @return Collection<int, Tags>
+     */
+    public function getTags(): Collection
     {
         return $this->tags;
     }
 
-    public function setTags(?array $tags): static
+    public function addTag(Tags $tag): static
     {
-        $this->tags = $tags;
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+            $tag->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tags $tag): static
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeProject($this);
+        }
 
         return $this;
     }

@@ -8341,3 +8341,9 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #3b4ec6; }
+
+.form-textarea{
+  height: auto !important;
+  resize: vertical !important;
+  min-height: calc(1.5em + 0.75rem + 2px) !important;
+}

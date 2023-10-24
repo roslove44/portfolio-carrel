@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard | ak58graph{% endblock %}
+
+{% block body %}
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Ajoutez un projet</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+    </p>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-11 shadow-lg p-3 rounded-lg">
+            {% if form_errors(addProject) %}
+            <div class="alert alert-warning">
+                {{ form_errors(addProject) }}
+            </div>
+            {% endif %}
+
+            {{form_start(addProject)}}
+            <div class="form-group">
+                <label>Client</label>
+                {{form_widget(addProject.client)}}
+                <small id="clientHelp" class="form-text text-muted">&#8627; Bénéficiaire du projet</small>
+            </div>
+            <div class="form-group">
+                <label>Catégorie</label>
+                {{form_widget(addProject.category)}}
+                <small id="categoryHelp" class="form-text text-muted">&#8627; Ex : Web design</small>
+            </div>
+            <div class="form-row pb-2">
+                <div class="col-xl-6 col-lg-5 col-md-6">
+                    <label>Période de réalistion</label>
+                    {{form_widget(addProject.productionPeriod)}}
+                    <small id="productionPeriodHelp" class="form-text text-muted">&#8627; Date de livraison du
+                        projet</small>
+                </div>
+                <div class="col-xl-6 col-lg-7 col-md-6">
+                    <label>Lien du projet (url) </label>
+                    {{form_widget(addProject.work_link)}}
+                    <small id="work_linkHelp" class="form-text text-muted">&#8627; Adresse de visualisation du
+                        projet (Google drive, Site web etc etc ) </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                {{form_widget(addProject.description)}}
+            </div>
+            <div class="form-group">
+                <label>Image de prévisualisation du projet</label>
+                {{form_widget(addProject.proj_image)}}
+            </div>
+            {{form_end(addProject)}}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
