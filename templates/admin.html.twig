@@ -48,14 +48,15 @@
         $(document).ready(function () {
             $('.select-tags').select2({
                 tags: true,
-                tokenSeparators: [',', ' ', ';']
+                tokenSeparators: [',', ' ', ';'],
             }).on('change', function (e) {
                 let label = $(this).find("[data-select2-tag=true]");
-                let options = $(this).find("[data-select2-id]").filter(function () {
-                    return !$(this).is("[data-select2-tag=true]");
-                });
-                console.log("Options : " + options, "Label : " + label);
-                if (label.length && $.inArray(label.val(), $(this).val()) !== -1 && $.inArray(options, $(this).val()) !== -1) {
+                let options = $(this).find("[data-select2-id]").not("[data-select2-tag=true]");
+                let optionsText = options.map(function () {
+                    return $(this).text();
+                }).get();
+                console.log([optionsText, label.val(), $(this).val()]);
+                if (label.length && $.inArray(label.val(), $(this).val()) !== -1) {
                     $.ajax({
                         url: "tags/add/ajax/" + label.val(),
                         type: "POST",
