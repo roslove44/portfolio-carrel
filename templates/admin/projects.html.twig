@@ -3,7 +3,7 @@
 {% block title %}Dashboard | ak58graph{% endblock %}
 
 {% block body %}
-<div id="content" class="p-4 p-md-5 pt-5">
+<div id="content" class="px-4 px-md-5 py-0">
     <h2 class="mb-4">Ajoutez un projet</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -21,38 +21,44 @@
             {% endif %}
 
             {{form_start(addProject)}}
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Client</label>
                 {{form_widget(addProject.client)}}
                 <small id="clientHelp" class="form-text text-muted">&#8627; Bénéficiaire du projet</small>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Catégorie</label>
                 {{form_widget(addProject.category)}}
                 <small id="categoryHelp" class="form-text text-muted">&#8627; Ex : Web design</small>
             </div>
-            <div class="form-row pb-2">
-                <div class="col-xl-6 col-lg-5 col-md-6">
+            <div class="row mb-3">
+                <div class="col-xl-4 col-lg-5 col-md-6">
                     <label>Période de réalistion</label>
                     {{form_widget(addProject.productionPeriod)}}
                     <small id="productionPeriodHelp" class="form-text text-muted">&#8627; Date de livraison du
                         projet</small>
                 </div>
-                <div class="col-xl-6 col-lg-7 col-md-6">
+                <div class="col-xl-7 col-lg-7 col-md-6">
                     <label>Lien du projet (url) </label>
                     {{form_widget(addProject.work_link)}}
                     <small id="work_linkHelp" class="form-text text-muted">&#8627; Adresse de visualisation du
                         projet (Google drive, Site web etc etc ) </small>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Description</label>
                 {{form_widget(addProject.description)}}
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Image de prévisualisation du projet</label>
                 {{form_widget(addProject.proj_image)}}
             </div>
+            <div class="mb-3">
+                <label>Tags</label>
+                {{form_widget(addProject.tags)}}
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Ajoutez</button>
             {{form_end(addProject)}}
 
         </div>

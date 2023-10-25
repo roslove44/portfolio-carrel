@@ -19,7 +19,7 @@ class Tags
     #[ORM\ManyToMany(targetEntity: Projects::class, inversedBy: 'tags')]
     private Collection $projects;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
 
     public function __construct()

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Projects;
+use App\Entity\Tags;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -78,7 +80,15 @@ class ProjectType extends AbstractType
                 ]
 
             ])
-            ->add('tags');
+            ->add('tags', EntityType::class, [
+                'class' => Tags::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+                'by_reference' => false, // chercher les setteurs avec set ou add utile pour les ManyToMany
+                'attr' => [
+                    'class' => 'select-tags w-100',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

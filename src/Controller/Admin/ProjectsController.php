@@ -20,6 +20,10 @@ class ProjectsController extends AbstractController
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd($project);
+        }
+
         return $this->render('admin/projects.html.twig', [
             'addProject' => $form->createView(),
         ]);

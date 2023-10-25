@@ -1,29 +1,37 @@
-<ul class="list-unstyled components mb-5">
-    <li class="{% if app.current_route == 'app_admin' %}active{% endif %}">
-        <a href="{{path('app_admin')}}"><span class="fa fa-home mr-3"></span> Tableau de bord</a>
-    </li>
-    <li class="{% if app.current_route == 'app_admin_projects' %}active{% endif %}">
-        <a href="{{path('app_admin_projects')}}"><span class="fa fa-briefcase mr-3"></span>Projets</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-user mr-3"></span> About</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-briefcase mr-3"></span> Projets</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Blog</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-cogs mr-3"></span> Services</a>
-    </li>
-    <li>
-        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
-    </li>
-    <li>
-        <a href="{{path('app_logout')}}"><span class="fa fa-sign-out mr-3"></span> Déconnexion</a>
-    </li>
-</ul>
+<nav class="nav">
+    <div>
+        <a href="{{path('app_main')}}" class="nav_logo">
+            <i class="bx bx-layer nav_logo-icon"></i>
+            <span class="nav_logo-name">ak58graph</span>
+        </a>
+        <div class="nav_list">
+            <a href="{{path('app_admin')}}" class="nav_link active">
+                <i class="bx bx-grid-alt nav_icon"></i>
+                <span class="nav_name">Dashboard</span>
+            </a>
+            <a href="{{path('app_admin_projects')}}" class="nav_link">
+                <i class='bx bxs-briefcase'></i>
+                <span class="nav_name">Projets</span>
+            </a>
+            <a href="#" class="nav_link">
+                <i class="bx bx-message-square-detail nav_icon"></i>
+                <span class="nav_name">Messages</span>
+            </a>
+            <a href="#" class="nav_link">
+                <i class="bx bx-bookmark nav_icon"></i>
+                <span class="nav_name">Bookmark</span>
+            </a>
+            <a href="#" class="nav_link">
+                <i class="bx bx-folder nav_icon"></i>
+                <span class="nav_name">Files</span>
+            </a>
+            <a href="#" class="nav_link">
+                <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
+                <span class="nav_name">Stats</span>
+            </a>
+        </div>
+    </div>
+    <a href="#" class="nav_link">
+        <i class="bx bx-log-out nav_icon"></i> <span class="nav_name">SignOut</span>
+    </a>
+</nav>

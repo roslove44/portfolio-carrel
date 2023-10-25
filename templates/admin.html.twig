@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr-FR">
 
 <head>
@@ -12,55 +11,61 @@
     {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{asset('admin/css/side.css')}}">
     {% endblock %}
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     {% block javascripts %}
     {% endblock %}
 </head>
 
-<body>
-    <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="bg-dark">
-            <div class="custom-menu">
-                <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="fa fa-bars"></i>
-                    <span class="sr-only">Toggle Menu</span>
-                </button>
-            </div>
-            <div class="p-4">
-                <h1><a href="index.html" class="logo">Portfolio <span>ak58graph</span></a></h1>
-                {% include "_partials/_admin_nav.html.twig" %}
-
-
-                <div class="footer">
-                    <p>
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> Réalisé par <a
-                            href="https://rostand-migan.com" target="_blank" class="text-white">Rost Digital Services
-                        </a>
-                    </p>
-                </div>
-
-            </div>
-        </nav>
-        <!-- Page Content  -->
-        {% block body %}{% endblock %}
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        {% include "_partials/_admin_nav.html.twig" %}
     </div>
 
-    {% include "_partials/_flash.html.twig" %}
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        {% block body %}{% endblock %}
+        {% include "_partials/_flash.html.twig" %}
+    </div>
+    <!--Container Main end-->
 
 
     <!--All Javascript -->
-    <script src="{{asset('admin/js/jquery.min.js')}}"></script>
-    <script src="{{asset('admin/js/popper.js')}}"></script>
-    <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin/js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{{asset('admin/js/side.js')}}"></script>
     <script>
-        const date = new Date();
-        currentYear = date.getFullYear();
-        const copyright = document.getElementById("copyright");
-        copyright.innerText = currentYear + " Réalisé par Rost Digital Services"
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+            $('.select-tags').select2({
+                tags: true,
+                tokenSeparators: [',', ' ', ';']
+            }).on('change', function (e) {
+                let label = $(this).find("[data-select2-tag=true]");
+                let options = $(this).find("[data-select2-id]").filter(function () {
+                    return !$(this).is("[data-select2-tag=true]");
+                });
+                console.log("Options : " + options, "Label : " + label);
+                if (label.length && $.inArray(label.val(), $(this).val()) !== -1 && $.inArray(options, $(this).val()) !== -1) {
+                    $.ajax({
+                        url: "tags/add/ajax/" + label.val(),
+                        type: "POST",
+                    }).done(function (data) {
+                        label.replaceWith(`<option selected value="${data.id}">${label.val()}</option>`)
+                        console.log(data);
+                    })
+                }
+            });
+        });
     </script>
 </body>
 
