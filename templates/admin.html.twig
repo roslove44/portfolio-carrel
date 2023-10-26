@@ -55,14 +55,30 @@
                 let optionsText = options.map(function () {
                     return $(this).text();
                 }).get();
-                console.log([optionsText, label.val(), $(this).val()]);
+                // console.log([options, optionsText, label.val(), $(this).val()]);
                 if (label.length && $.inArray(label.val(), $(this).val()) !== -1) {
                     $.ajax({
                         url: "tags/add/ajax/" + label.val(),
                         type: "POST",
                     }).done(function (data) {
-                        label.replaceWith(`<option selected value="${data.id}">${label.val()}</option>`)
-                        console.log(data);
+                        if (!data.exist) {
+                            label.replaceWith(`<option selected value="${data.id}">${label.val()}</option>`);
+                        } else {
+                            label.replaceWith(`<option selected value="${data.id}">${label.val()}</option>`);
+                            let duplicateValue = label.val();
+                            let isDuplicate = false;
+
+                            // Parcourir les éléments de sélection
+                            $('.select2-results__option').each(function () {
+                                let selectedValue = $(this).text().substring(1); // ou utilisez la méthode appropriée pour obtenir la valeur
+                                console.log(selectedValue);
+                                if (selectedValue === duplicateValue) {
+                                    isDuplicate = true;
+                                    console.log("Doublon trouvé, suppression de l'élément en doublon");
+                                    $(this).remove();
+                                }
+                            });
+                        }
                     })
                 }
             });
