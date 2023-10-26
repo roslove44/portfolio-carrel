@@ -73,9 +73,6 @@
                                 let selectedValue = $(this).text().substring(1); // ou utilisez la méthode appropriée pour obtenir la valeur
                                 console.log(selectedValue);
                                 if (selectedValue === duplicateValue) {
-                                    isDuplicate = true;
-                                    console.log("Doublon trouvé, suppression de l'élément en doublon");
-                                    $(this).remove();
                                 }
                             });
                         }

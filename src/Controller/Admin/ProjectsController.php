@@ -21,7 +21,8 @@ class ProjectsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($project);
+            $proj_image = $form->get('proj_image')->getData();
+            dd($proj_image);
         }
 
         return $this->render('admin/projects.html.twig', [
