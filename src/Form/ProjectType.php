@@ -65,18 +65,13 @@ class ProjectType extends AbstractType
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg',
-                            'image/gif',
-                            'image/bmp',
-                            'image/tiff',
                             'image/webp',
-                            'image/svg+xml',
-                            'image/x-icon',
                         ],
-                        'mimeTypesMessage' => 'Veuillez télécharger un fichier au format PNG, JPEG, GIF, BMP, TIFF, WebP, SVG ou ICO.',
+                        'mimeTypesMessage' => 'Veuillez télécharger un fichier au format PNG, JPEG, GIF, WebP.',
                     ])
                 ],
                 'attr' => [
-                    'accept' => 'image/png ,image/jpeg, image/gif, image/bmp, image/tiff, image/webp, image/svg+xml, image/x-icon',
+                    'accept' => 'image/png ,image/jpeg, image/webp',
                 ]
 
             ])
