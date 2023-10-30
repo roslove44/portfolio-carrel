@@ -1,0 +1,67 @@
+<div class="col-11 shadow-lg p-3 rounded-lg">
+    {{form_start(addProject)}}
+    <div class="mb-3">
+        <label>Client</label>
+        {{form_widget(addProject.client)}}
+        <small id="clientHelp" class="form-text text-muted">&#8627; Bénéficiaire du projet</small>
+    </div>
+    <div class="mb-3">
+        <label>Catégorie</label>
+        {{form_widget(addProject.category)}}
+        <small id="categoryHelp" class="form-text text-muted">&#8627; Ex : Web design</small>
+    </div>
+    <div class="row mb-3">
+        <div class="col-xl-4 col-lg-5 col-md-6">
+            <label>Période de réalistion</label>
+            {{form_widget(addProject.productionPeriod)}}
+            <small id="productionPeriodHelp" class="form-text text-muted">&#8627; Date de livraison du
+                projet</small>
+        </div>
+        <div class="col-xl-7 col-lg-7 col-md-6">
+            <label>Lien du projet (url) </label>
+            {{form_widget(addProject.work_link)}}
+            <small id="work_linkHelp" class="form-text text-muted">&#8627; Adresse de visualisation du
+                projet (Google drive, Site web etc etc ) </small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        {{form_widget(addProject.description)}}
+    </div>
+    <div class="mb-3">
+        <label>Image de prévisualisation du projet</label>
+        {{form_widget(addProject.proj_image)}}
+        {% if app.current_route == 'app_admin_edit_projects' %}
+        <div class="d-flex justify-content-center flex-row flex-wrap">
+            <div class="mt-2 align-self-center">
+                <img src="{{asset('uploads/thumbnails/' ~ project.projImage)}}" alt="" width="200">
+                <small class="form-text text-muted">&#8627; Pour modifier l'image, insérer une nouvelle dans le champ çi
+                    dessus.</small>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label>Images Carrousel</label>
+        {{form_widget(addProject.images)}}
+        {% if app.current_route == 'app_admin_edit_projects' %}
+        <div class="d-flex justify-content-around flex-row flex-wrap">
+            {% for image in project.images %}
+            <div class="mt-2 align-self-center d-flex flex-column">
+                <img src="{{asset('uploads/projects/' ~ image.fileSrc)}}" alt="" width="200" height="100">
+                <a href="{{path('app_admin_images', {id: image.id})}}" class="badge bg-danger" data-delete
+                    data-token="{{csrf_token('delete' ~ image.id)}}">Supprimer</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class=" mb-3">
+        <label>Tags</label>
+        {{form_widget(addProject.tags)}}
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Ajoutez</button>
+    {{form_end(addProject)}}
+
+</div>

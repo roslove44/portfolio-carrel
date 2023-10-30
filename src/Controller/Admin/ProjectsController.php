@@ -67,4 +67,19 @@ class ProjectsController extends AbstractController
             'addProject' => $form->createView(),
         ]);
     }
+
+    #[Route('/admin/projects/{slug}', name: 'app_admin_edit_projects')]
+    public function editProject(Request $request, Projects $project): Response
+    {
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+        }
+
+        return $this->render('admin/projects.html.twig', [
+            'addProject' => $form->createView(),
+            'project'  => $project
+        ]);
+    }
 }

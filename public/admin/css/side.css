@@ -180,3 +180,10 @@ a {
         padding-left: calc(var(--nav-width) + 188px)
     }
 }
+
+.tag {
+    color: black;
+    font-weight: bolder;
+    font-size: smaller;
+    font-style: italic;
+}
