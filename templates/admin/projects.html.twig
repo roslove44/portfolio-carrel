@@ -3,23 +3,16 @@
 {% block title %}Dashboard | ak58graph{% endblock %}
 
 {% block body %}
-<div id="content" class="px-4 px-md-5 py-0">
+<div id="container" class="px-4 px-md-5 py-0">
     <h2 class="mb-4">Ajoutez un projet</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.
-    </p>
+    {% if form_errors(addProject) %}
+    <div class="alert alert-warning">
+        {{ form_errors(addProject) }}
+    </div>
+    {% endif %}
     <hr>
     <div class="row justify-content-center">
         <div class="col-11 shadow-lg p-3 rounded-lg">
-            {% if form_errors(addProject) %}
-            <div class="alert alert-warning">
-                {{ form_errors(addProject) }}
-            </div>
-            {% endif %}
-
             {{form_start(addProject)}}
             <div class="mb-3">
                 <label>Client</label>
@@ -52,6 +45,10 @@
             <div class="mb-3">
                 <label>Image de prévisualisation du projet</label>
                 {{form_widget(addProject.proj_image)}}
+            </div>
+            <div class="mb-3">
+                <label>Images Carrousel</label>
+                {{form_widget(addProject.images)}}
             </div>
             <div class="mb-3">
                 <label>Tags</label>

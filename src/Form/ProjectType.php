@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Images;
 use App\Entity\Projects;
 use App\Entity\Tags;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -75,6 +76,10 @@ class ProjectType extends AbstractType
                 ]
 
             ])
+            ->add('images', FileType::class, [
+                'multiple' => true,
+                'mapped' => false,
+            ])
             ->add('tags', EntityType::class, [
                 'class' => Tags::class,
                 'multiple' => true,
@@ -90,6 +95,7 @@ class ProjectType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Projects::class,
+            'required' => true
         ]);
     }
 }

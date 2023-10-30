@@ -34,11 +34,14 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $proj_image = null;
 
-    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class)]
+    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class, cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'projects')]
     private Collection $tags;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
 
     public function __construct()
@@ -177,6 +180,18 @@ class Projects
         if ($this->tags->removeElement($tag)) {
             $tag->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
