@@ -73,12 +73,12 @@ class PicturesServices
         $path = $this->params->get('images_directory') . $folder;
 
         // On crée le dossier de destination s'il n'existe pas
-        if (!file_exists($path . '/mini/')) {
-            mkdir($path . '/mini/', 0755, true);
-        }
+        // if (!file_exists($path . '/mini/')) {
+        //     mkdir($path . '/mini/', 0755, true);
+        // }
 
         // Stock l'image recadré
-        imagewebp($resized_picture, $path . '/mini/' . $width . 'x' . $height . '-' . $file);
+        // imagewebp($resized_picture, $path . '/mini/' . $width . 'x' . $height . '-' . $file);
         $picture->move($path . '/', $file);
         return $file;
     }

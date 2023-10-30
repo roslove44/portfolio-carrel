@@ -30,7 +30,7 @@ class ProjectsController extends AbstractController
             $images = $form->get('images')->getData();
             foreach ($images as $image) {
                 //    On définit le dossier de destination 
-                $folder = "product";
+                $folder = "projects";
                 // On appelle le service d'ajout 
                 $fichier = $picturesService->add(
                     $image,
@@ -56,6 +56,11 @@ class ProjectsController extends AbstractController
 
             $em->persist($project);
             $em->flush();
+
+            $name = $project->getClient();
+
+            $this->addFlash('success', "Projet $name enregistré avec succès!");
+            return $this->redirectToRoute('app_projects_details', ['slug' => $project->getSlug()]);
         }
 
         return $this->render('admin/projects.html.twig', [

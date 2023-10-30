@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Projects;
 use App\Form\ContactTypeFormType;
 use App\Service\SendMailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,8 +19,8 @@ class AllProjectsController extends AbstractController
     }
 
     #[Route('/projects/{slug}', name: 'app_projects_details')]
-    public function bySlug(): Response
+    public function bySlug(Projects $project): Response
     {
-        return $this->render('projects/bySlug.html.twig');
+        return $this->render('projects/bySlug.html.twig', compact('project'));
     }
 }

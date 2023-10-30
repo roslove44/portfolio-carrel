@@ -18,7 +18,7 @@
                         </ol>
                     </nav>
 
-                    <h4 class="text-white">ak58graph | Projet ENEAM 360</h4>
+                    <h4 class="text-white">ak58graph | {{project.client}} </h4>
                 </div>
             </div>
         </div>
@@ -33,14 +33,12 @@
             <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
+                        {% for image in project.images %}
                         <div class="swiper-slide">
-                            <img src="{{asset('assets/images/hero-bg.jpg')}}" alt="" class="rounded-2">
+                            <img src="{{ asset('uploads/projects/' ~ image.fileSrc) }}" alt="{{image.name}}"
+                                class="rounded-2">
                         </div>
-
-                        <div class="swiper-slide">
-                            <img src="{{asset('assets/images/hero-bg.jpg')}}" alt="" class="rounded-2">
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -49,22 +47,31 @@
                 <div class="portfolio-info rounded-2">
                     <h3 data-turn-text-white>Informations sur le Projet</h3>
                     <ul data-turn-text-white>
-                        <li><strong>Catégorie</strong>: Web design</li>
-                        <li><strong>Client</strong>: ASU Company</li>
-                        <li><strong>Période de réalisation</strong>: March, 2020</li>
-                        <li><strong>Lien du Projet</strong>: <a href="#">www.example.com</a></li>
+                        <li><strong>Catégorie</strong>: {{project.category}}</li>
+                        <li><strong>Client</strong>: {{project.client}}</li>
+                        <li>
+                            <strong>Période de réalisation</strong>:
+                            {{project.productionPeriod|format_datetime('long','none', 'MMMM Y') | capitalize}}
+                        </li>
+                        <li>
+                            <strong>Lien du Projet</strong>:
+                            <a href="{{project.workLink}}">
+                                {{project.workLink|replace({'https://':''})|replace({'http://': ''})}}
+                            </a>
+                        </li>
                         <li class="tag" data-turn-text-white>
-                            <span>#design #web #flyers </span>
+                            <span>
+                                {% for tag in project.tags %}
+                                #{{tag.name}}
+                                {% endfor %}
+                            </span>
                         </li>
                     </ul>
                 </div>
                 <div class="portfolio-description">
-                    <h2 data-turn-text-principal>Couverture Festichill</h2>
+                    <h2 data-turn-text-principal>{{project.category}} - {{project.client}}</h2>
                     <p data-turn-text-white>
-                        Création d'affiches publicitaires pour Festicchill 2022 2023 Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Sapiente a possimus ut explicabo illo? Harum recusandae
-                        hic assumenda dolor soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ratione odio voluptas alias incidunt laudantium iste est repellendus nemo sint corrupti.
+                        {{project.description}}
                     </p>
                 </div>
             </div>
