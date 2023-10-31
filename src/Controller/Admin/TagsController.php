@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Tags;
+use App\Repository\TagsRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class TagsController extends AbstractController
 {
     #[Route('admin/tags/add/ajax/{label}', name: 'app_admin_tags', methods: ["POST"])]
-    public function addTags($label, EntityManagerInterface $em): JsonResponse
+    public function addTagsAjax($label, EntityManagerInterface $em): JsonResponse
     {
         try {
             $tag = new Tags();
@@ -41,5 +42,12 @@ class TagsController extends AbstractController
             // Par exemple, renvoyer une réponse JSON indiquant que l'élément n'existe pas.
             return new JsonResponse(['error' => 'L\'élément n\'existe pas'], 400);
         }
+    }
+
+    #[Route('admin/tags/add/', name: 'app_tags')]
+    public function addTags(TagsRepository $tagsRepository): Response
+    {
+        $tags = $tagsRepository->findBy([], ['id' => 'ASC']);
+        return $this->render('admin/tags.html.twig', compact('tags'));
     }
 }

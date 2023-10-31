@@ -43,11 +43,15 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $achievement = null;
 
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'projects')]
+    private Collection $categories;
+
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,6 +196,30 @@ class Projects
     public function setAchievement(string $achievement): static
     {
         $this->achievement = $achievement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categories $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): static
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

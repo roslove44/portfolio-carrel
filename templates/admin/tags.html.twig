@@ -1,0 +1,57 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard | ak58graph{% endblock %}
+
+{% block body %}
+<div id="container" class="px-4 px-md-5 py-0 bg-white">
+    <h2 class="mb-4">Tags</h2>
+    <p>Gestion des Tags</p>
+    <hr>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tags</th>
+                        <th scope="col">Projets</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tag in tags %}
+                    <tr>
+                        <td> {{tag.id}} </td>
+                        <td> {{tag.name}} </td>
+                        <td>
+                            <ol class="list-group">
+                                {% for project in tag.projects %}
+                                {% if project is not empty %}
+                                <li>
+                                    {{ project.slug }}
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                            {% if tag.projects is empty %}
+                            <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté</div>
+                            {% endif %}
+                        </td>
+                        <td class="d-flex justify-content-around">
+                            <a href="" class="badge bg-danger" title="Supprimer le tags"> <i
+                                    class='bx bx-trash'></i></a>
+                            <a href="" class="badge bg-dark" title="Modifier le tags">
+                                <i class='bx bx-edit'></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-12">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
