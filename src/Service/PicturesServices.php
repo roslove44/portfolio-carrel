@@ -90,10 +90,10 @@ class PicturesServices
             $path = $this->params->get('images_directory') . $folder;
             $mini = $path . '/mini/' . $width . 'x' . $height . '-' . $file;
 
-            if (file_exists($mini)) {
-                unlink($mini);
-                $success = true;
-            }
+            // if (file_exists($mini)) {
+            //     unlink($mini);
+            //     $success = true;
+            // }
 
             $original = $path . '/' . $file;
             if (file_exists($original)) {

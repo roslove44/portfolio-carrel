@@ -20,7 +20,7 @@ class ImagesController extends AbstractController
         $data = json_decode($request->getContent(), true);
         if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
             // Le token csrf est valide
-            $name = $image->getName();
+            $name = $image->getFileSrc();
             if ($picturesServices->delete($name, 'projects')) {
                 $em->remove($image);
                 $em->flush();

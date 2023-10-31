@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Images;
+
 use App\Entity\Projects;
 use App\Entity\Tags;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,13 +25,15 @@ class ProjectType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'aria-describedby' => 'clientHelp',
-                ]
+                ],
+                'required' => true,
             ])
-            ->add('category', TextType::class, [
+            ->add('achievement', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'aria-describedby' => 'categoryHelp',
-                ]
+                ],
+                'required' => true,
             ])
             ->add('productionPeriod', DateType::class, [
                 'label' => false,
@@ -42,25 +44,28 @@ class ProjectType extends AbstractType
                 'attr' => [
                     'aria-describedby' => 'productionPeriodHelp',
                     'class' => 'flex-fill'
-                ]
+                ],
+                'required' => true,
             ])
             ->add('work_link', UrlType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'aria-describedby' => 'work_linkHelp',
-                ]
+                ],
+                'required' => true,
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'aria-describedby' => 'descriptionHelp',
                     'class' => 'form-textarea',
                     'rows' => 5,
-                ]
+                ],
+                'required' => true,
             ])
             ->add('proj_image', FileType::class, [
                 'multiple' => false,
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'mimeTypes' => [
@@ -79,6 +84,7 @@ class ProjectType extends AbstractType
             ->add('images', FileType::class, [
                 'multiple' => true,
                 'mapped' => false,
+                'required' => false,
             ])
             ->add('tags', EntityType::class, [
                 'class' => Tags::class,
@@ -88,6 +94,7 @@ class ProjectType extends AbstractType
                 'attr' => [
                     'class' => 'select-tags w-100',
                 ],
+                'required' => true,
             ]);
     }
 
@@ -95,7 +102,6 @@ class ProjectType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Projects::class,
-            'required' => true
         ]);
     }
 }

@@ -19,9 +19,6 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $client = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $category = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $productionPeriod = null;
 
@@ -43,6 +40,9 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $achievement = null;
+
 
     public function __construct()
     {
@@ -63,18 +63,6 @@ class Projects
     public function setClient(string $client): static
     {
         $this->client = $client;
-
-        return $this;
-    }
-
-    public function getCategory(): ?string
-    {
-        return $this->category;
-    }
-
-    public function setCategory(string $category): static
-    {
-        $this->category = $category;
 
         return $this;
     }
@@ -192,6 +180,18 @@ class Projects
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getAchievement(): ?string
+    {
+        return $this->achievement;
+    }
+
+    public function setAchievement(string $achievement): static
+    {
+        $this->achievement = $achievement;
 
         return $this;
     }

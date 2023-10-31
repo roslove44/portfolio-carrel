@@ -7,7 +7,7 @@
     </div>
     <div class="mb-3">
         <label>Catégorie</label>
-        {{form_widget(addProject.category)}}
+        {{form_widget(addProject.achievement)}}
         <small id="categoryHelp" class="form-text text-muted">&#8627; Ex : Web design</small>
     </div>
     <div class="row mb-3">
@@ -61,7 +61,13 @@
         {{form_widget(addProject.tags)}}
     </div>
 
-    <button type="submit" class="btn btn-secondary">Ajoutez</button>
+    <button type="submit" class="btn btn-secondary w-100">
+        {% if app.request.attributes.get('_route') == 'app_admin_edit_projects' %}
+        Mettre à jour
+        {% else %}
+        Ajoutez
+        {% endif %}
+    </button>
     {{form_end(addProject)}}
 
 </div>
