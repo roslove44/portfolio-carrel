@@ -50,4 +50,10 @@ class TagsController extends AbstractController
         $tags = $tagsRepository->findBy([], ['id' => 'ASC']);
         return $this->render('admin/tags.html.twig', compact('tags'));
     }
+
+    #[Route('admin/tags/delete/', name: 'app_delete_tags')]
+    public function deleteTags(TagsRepository $tagsRepository): Response
+    {
+        return $this->render('admin/tags.html.twig');
+    }
 }
