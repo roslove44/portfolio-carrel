@@ -9,49 +9,96 @@
     <hr>
     <div class="row">
         <div class="col-xl-4 col-lg-6 col-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col">Projets</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for tag in tags %}
-                    <tr>
-                        <td> {{tag.id}} </td>
-                        <td> {{tag.name}} </td>
-                        <td>
-                            <ol class="list-group">
-                                {% for project in tag.projects %}
-                                {% if project is not empty %}
-                                <li>
-                                    {{ project.slug }}
-                                </li>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tags</th>
+                            <td></td>
+                            <th scope="col">Projets</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tag in tags %}
+                        <tr>
+                            <td scope="row"> {{tag.id}} </td>
+                            <td data-editTag class="align-self-center m-1" style="caret-color: red;">
+                                {{tag.name}}
+                            </td>
+                            <td></td>
+                            <td>
+                                <ol class="list-group">
+                                    {% for project in tag.projects %}
+                                    {% if project is not empty %}
+                                    <li>
+                                        {{ project.slug }}
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ol>
+                                {% if tag.projects is empty %}
+                                <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté</div>
                                 {% endif %}
-                                {% endfor %}
-                            </ol>
-                            {% if tag.projects is empty %}
-                            <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté</div>
-                            {% endif %}
-                        </td>
-                        <td class="d-flex justify-content-around">
-                            <a href="" class="badge bg-danger" title="Supprimer le tags"> <i
-                                    class='bx bx-trash'></i></a>
-                            <a href="" class="badge bg-dark" title="Modifier le tags">
-                                <i class='bx bx-edit'></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                            </td>
+                            <td class="d-flex justify-content-around">
+                                <a href="#" class="badge bg-dark" title="Modifier le tag" data-editTag-control
+                                    onclick="editTag(this)">
+                                    <i class='bx bx-edit'></i>
+                                </a>
+                                <a href="" class="badge bg-danger" title="Supprimer le tag"> <i
+                                        class='bx bx-trash'></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col-xl-6 col-lg-6 col-12">
-
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    let target;
+    let focusedElement;
+
+    document.addEventListener('focus', function (e) {
+        focusedElement = e.target;
+    });
+
+    document.addEventListener('blur', function () {
+        focusedElement = null;
+    });
+
+    console.log(target, focusedElement);
+
+    function editTag(e) {
+        target = e.parentNode.parentNode.querySelector("[data-editTag]");
+        target.setAttribute('contentEditable', true);
+
+        // // Placez le curseur à la fin du texte
+        target.focus();
+        setCursorAtEnd(target);
+    }
+
+
+
+    function setCursorAtEnd(element) {
+        let textNode = element.firstChild;
+        let range = document.createRange();
+        let sel = window.getSelection();
+
+        if (textNode) {
+            range.setStart(textNode, textNode.length);
+            range.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    }
+</script>
 {% endblock %}

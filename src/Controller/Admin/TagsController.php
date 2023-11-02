@@ -44,7 +44,7 @@ class TagsController extends AbstractController
         }
     }
 
-    #[Route('admin/tags/add/', name: 'app_tags')]
+    #[Route('admin/tags/', name: 'app_tags')]
     public function addTags(TagsRepository $tagsRepository): Response
     {
         $tags = $tagsRepository->findBy([], ['id' => 'ASC']);
