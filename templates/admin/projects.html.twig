@@ -1,0 +1,18 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard | ak58graph{% endblock %}
+
+{% block body %}
+<div id="container" class="px-4 px-md-5 py-0">
+    <h2 class="mb-4">Ajoutez un projet</h2>
+    {% if form_errors(addProject) %}
+    <div class="alert alert-warning">
+        {{ form_errors(addProject) }}
+    </div>
+    {% endif %}
+    <hr>
+    <div class="row justify-content-center">
+        {% include "_partials/_admin_form.html.twig" %}
+    </div>
+</div>
+{% endblock %}

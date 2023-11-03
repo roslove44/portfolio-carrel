@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard | ak58graph{% endblock %}
+
+{% block body %}
+<div id="container" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Tableau de bord</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.</p>
+    <hr>
+
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-auto">
+            <div class="card" style="width: 18rem;">
+                <img src="{{asset('uploads/thumbnails/' ~ project.projImage)}}" class="card-img-top"
+                    alt="{{project.client}}">
+                <div class="card-body pb-0">
+                    <h5 class="card-title text-center">
+                        {{project.client}}
+                    </h5>
+                    <div class="card-text">
+                        <ul style="list-style: none; padding-left: 0;" class="tag">
+                            <li>Réalisation : {{project.achievement}}</li>
+                            <li>Client : {{project.client}}</li>
+                            <li>
+                                Période de réalisation :
+                                {{project.productionPeriod|format_datetime('long','none', 'MMMM Y') | capitalize}}
+                            </li>
+                            <li>
+                                Lien du Projet :
+                                <a href="{{project.workLink}}" target="_blank">
+                                    {{project.workLink|replace({'https://':''})|replace({'http://': ''})}}
+                                </a>
+                            </li>
+                            <li>
+                                Tags :
+                                {% for tag in project.tags %}
+                                #{{tag.name}}
+                                {% endfor %}
+                            </li>
+                            <li>
+                                Période :
+                                <span>
+                                    {{project.productionPeriod|format_datetime('long','none', 'MMMM Y') | capitalize}}
+                                </span>
+                            </li>
+                        </ul>
+                        <p class="text-muted tag">
+                            {{project.description |slice(0, 75) ~ (project.description|length > 75 ? '...' : '')}}
+                        </p>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-around">
+                    <a href="" class="badge bg-danger" title="Supprimer"> <i class='bx bx-trash'></i></a>
+                    <a href="{{path('app_admin_edit_projects', {slug: project.slug})}}" class="badge bg-dark"
+                        title="Modifier">
+                        <i class='bx bx-edit'></i>
+                    </a>
+                    <a href="{{path('app_projects_details', {slug: project.slug})}}" class="badge bg-success"
+                        title="Voir" target="_blank">
+                        <i class='bx bx-play-circle'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

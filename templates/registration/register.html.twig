@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<!-- START HOME -->
+<section class="section header-bg-img h-10vh align-items-center d-flex pb-0">
+    <div class="bg-overlay"></div>
+    <div class="container z-index">
+        <div class="row justify-content-start">
+            <div class="col-lg-12">
+                <div class="header-content">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{path('app_main')}}" class=" text-white">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Connexion</li>
+                        </ol>
+                    </nav>
+
+                    <h4 class="text-white">ak58graph | Création de compte</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END HOME -->
+
+<!-- START LOGIN -->
+<section class="section text-center" data-turn-bg-dark>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="">
+                    <h2 class="text-center custom-title"><span class="fw-bold">Création de compte</span></h2>
+                    <p class="text-muted mx-auto mt-3" data-turn-text-white>
+                        ak58graph : Où la passion rencontre la conception.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-10">
+                {% if form_errors(registrationForm) %}
+                <div class="alert alert-warning">
+                    {{ form_errors(registrationForm) }}
+                </div>
+                {% endif %}
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword) }}
+
+                <button type="submit" class="btn btn-secondary w-50 mt-3">Créer le compte</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END LOGIN -->
+{% endblock %}

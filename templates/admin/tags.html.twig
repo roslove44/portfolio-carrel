@@ -1,0 +1,86 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard | ak58graph{% endblock %}
+
+{% block body %}
+<div id="container" class="px-4 px-md-5 py-0 bg-white">
+    <h2 class="mb-4">Tags</h2>
+    <p>Gestion des Tags</p>
+    <hr>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tags</th>
+                            <td></td>
+                            <th scope="col">Projets</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tag in tags %}
+                        <tr>
+                            <td scope="row"> {{tag.id}} </td>
+                            <td data-editTag="{{tag.id}}" class="align-self-center m-1" style="caret-color: red;"
+                                data-href="{{path('app_edit_tags', {id: tag.id})}}" data-token="
+                                {{csrf_token('update' ~ tag.id)}}">
+                                {{tag.name}}
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading{{tag.id}}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{tag.id}}" aria-expanded="true"
+                                                aria-controls="collapse{{tag.id}}">
+                                                Liste des projets Affectés
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{tag.id}}" class="accordion-collapse collapse"
+                                            aria-labelledby="heading{{tag.id}}" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <ol class="list-group">
+                                                    {% for project in tag.projects %}
+                                                    {% if project is not empty %}
+                                                    <li>
+                                                        {{ project.slug }}
+                                                    </li>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </ol>
+                                                {% if tag.projects is empty %}
+                                                <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a class="badge bg-dark" title="Modifier le tag" data-editTag-control
+                                    onclick="editTag(this, target)">
+                                    <i class='bx bx-edit'></i>
+                                </a>
+                                <a href="" class="badge bg-danger" title="Supprimer le tag"> <i
+                                        class='bx bx-trash'></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-12">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{asset('admin/js/tags.js')}}"></script>
+{% endblock %}

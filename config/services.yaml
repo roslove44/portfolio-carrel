@@ -6,6 +6,7 @@
 parameters:
   company_email: "contact@ak58graph.com"
   company_email_sender: "no-reply@ak58graph.com"
+  images_directory: "%kernel.project_dir%/public/uploads/"
 
 services:
   # default configuration for services in *this* file

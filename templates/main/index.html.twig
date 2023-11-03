@@ -19,7 +19,7 @@
                     <p class="mx-auto header-desc mt-4">ak58graph : Où la passion rencontre la
                         conception.</p>
                     <div class="mt-4 pt-2">
-                        <a href="#portfolio" class="btn btn-outline-custom btn-round">Portfolio</a>
+                        <a href="{{path('app_main')}}" class="btn btn-outline-custom btn-round">Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,8 @@
                         créativité prend vie. Explorez un échantillon de mes projets passés, un
                         voyage visuel à travers une variété de réalisations qui illustrent ma passion pour la
                         conception graphique et la
-                        création numérique.</p>
+                        création numérique.
+                    </p>
                 </div>
             </div>
         </div>
@@ -361,6 +362,9 @@
             </div>
         </div>
     </div>
+    <a class="btn btn-warning w-75 rounded-2 border-0" href="{{path('app_projects')}}" data-turn-bg-secondary
+        data-turn-text-principal>Tous
+        les projets</a>
 </section>
 <!-- END WORK -->
 
@@ -406,7 +410,7 @@
         <div class="row mt-5">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <p class="text-muted mx-auto mt-3">
+                    <p class="text-muted mx-auto mt-3" data-turn-text-white>
                         Vous avez des questions ou des commentaires ? <br>
                         <strong>
                             N'hésitez pas à nous contacter en utilisant notre formulaire de contact.
