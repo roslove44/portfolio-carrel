@@ -21,7 +21,6 @@ for (let link of links) {
         .then((response) => response.json())
         .then((data) => {
           if (data.success) {
-            console.log(data);
             this.parentElement.remove();
           } else {
             alert(data.error);

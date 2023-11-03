@@ -56,4 +56,23 @@ class TagsController extends AbstractController
     {
         return $this->render('admin/tags.html.twig');
     }
+
+    #[Route('admin/tags/edit/{id}', name: 'app_edit_tags', methods: ['PUT'])]
+    public function editTags(Tags $tag, EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        if ($this->isCsrfTokenValid('update' . $tag->getId(), $data['_token'])) {
+            // Le token csrf est valide
+            $oldName = $tag->getName();
+            if ($oldName !== $data['_updatedName']) {
+                $tag->setName($data['_updatedName']);
+                $em->persist($tag);
+                $em->flush();
+                return new JsonResponse(['success' => true], 200);
+            }
+            return new JsonResponse(['error' => 'Erreur de suppression !']);
+        }
+
+        return new JsonResponse(['error' => 'Token Invalide !']);
+    }
 }
