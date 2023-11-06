@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-
+use App\Entity\Categories;
 use App\Entity\Projects;
 use App\Entity\Tags;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -93,6 +93,16 @@ class ProjectType extends AbstractType
                 'by_reference' => false, // chercher les setteurs avec set ou add utile pour les ManyToMany
                 'attr' => [
                     'class' => 'select-tags w-100',
+                ],
+                'required' => true,
+            ])
+            ->add('categories', EntityType::class, [
+                'class' => Categories::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+                'by_reference' => false, // chercher les setteurs avec set ou add utile pour les ManyToMany
+                'attr' => [
+                    'class' => 'categories-tags w-100',
                 ],
                 'required' => true,
             ]);

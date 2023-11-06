@@ -43,6 +43,12 @@
                                 {% endfor %}
                             </li>
                             <li>
+                                Catégories :
+                                {% for category in project.categories %}
+                                #{{category.name}}
+                                {% endfor %}
+                            </li>
+                            <li>
                                 Période :
                                 <span>
                                     {{project.productionPeriod|format_datetime('long','none', 'MMMM Y') | capitalize}}

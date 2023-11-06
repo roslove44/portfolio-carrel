@@ -3,16 +3,47 @@
 {% block title %}Dashboard | ak58graph{% endblock %}
 
 {% block body %}
+
+{% set showForm = "d-none" %}
+{% if app.current_route == 'app_admin_projects' %}
+
+{% endif %}
+
+
 <div id="container" class="px-4 px-md-5 py-0">
-    <h2 class="mb-4">Ajoutez un projet</h2>
+    <h2 class="mb-4">
+        {% if app.current_route == 'app_admin_projects' %}
+        Projets
+        {% else %}
+        Modifier un projet
+        {% endif %}
+    </h2>
+    <p>
+        Gestion des Projets
+    </p>
+    <div>
+        <button class="btn btn-primary" type="button" onclick="toggleAddProjectForm()">
+            Ajoutez un projet
+        </button>
+        <a class="btn btn-primary" type="button" href="{{path('app_admin')}}">
+            Tableau de bord
+        </a>
+    </div>
     {% if form_errors(addProject) %}
     <div class="alert alert-warning">
         {{ form_errors(addProject) }}
     </div>
     {% endif %}
     <hr>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center {{showForm}}" id="addProject">
         {% include "_partials/_admin_form.html.twig" %}
     </div>
 </div>
+<script>
+    function toggleAddProjectForm() {
+        let projectForm = document.getElementById('addProject');
+        console.log(projectForm);
+        projectForm.classList.toggle("d-none");
+    }
+</script>
 {% endblock %}

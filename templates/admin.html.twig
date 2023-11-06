@@ -46,7 +46,7 @@
     <script src="{{asset('admin/js/side.js')}}"></script>
     <script src="{{asset('admin/js/images.js')}}"></script>
     <script>
-        // In your Javascript (external .js resource or <script> tag)
+        // Gestion sélection multiple Tags
         $(document).ready(function () {
             $('.select-tags').select2({
                 tags: true,
@@ -81,6 +81,15 @@
                     })
                 }
             });
+        });
+    </script>
+    <script>
+        // Gestion de la sélection multiple : Categories
+        $(document).ready(function () {
+            $('.categories-tags').select2({
+                tags: true,
+                tokenSeparators: [' ',],
+            })
         });
     </script>
     {% block javascripts %}

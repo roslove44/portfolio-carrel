@@ -10,7 +10,7 @@ class CategoriesFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $categories = [".entreprises", ".evenements", ".organisme", ".ui"];
+        $categories = ["entreprises", "evenements", "organisme", "ui"];
         for ($i = 0; $i < 4; $i++) {
             $category = new Categories();
             $category->setName($categories[$i]);
