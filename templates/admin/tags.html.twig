@@ -116,24 +116,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% if tags|length > 0 %}
-                        {% for tag in tags %}
+                        {% if categories|length > 0 %}
+                        {% for category in categories %}
                         <tr>
                             <td scope="row"> {{loop.index}} </td>
-                            <td data-editTag="{{tag.id}}" class="align-self-center m-1" style="caret-color: red;"
-                                data-href="{{path('app_edit_tags', {id: tag.id})}}"
-                                data-token="
-                                                                                                {{csrf_token('update' ~ tag.id)}}">
-                                {{tag.name}}
+                            <td class="align-self-center m-1" style="caret-color: red;">
+                                {{category.name}}
                             </td>
                             <td>
                                 <div class="tag">
-                                    {% for project in tag.projects %}
+                                    {% for project in category.projects %}
                                     {% if project is not empty %}
                                     #{{ project.slug }}
                                     {% endif %}
                                     {% endfor %}
-                                    {% if tag.projects is empty %}
+                                    {% if category.projects is empty %}
                                     <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté
                                     </div>
                                     {% endif %}
@@ -147,7 +144,7 @@
                         <tr>
                             <td colspan="4">
                                 <div class="alert alert-secondary">
-                                    Aucun Tag
+                                    Aucune Catégorie
                                 </div>
                             </td>
                         </tr>
