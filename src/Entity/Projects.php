@@ -46,6 +46,10 @@ class Projects
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'projects')]
     private Collection $categories;
 
+    #[ORM\GeneratedValue]
+    #[ORM\Column(unique: true)]
+    private ?int $priority = null;
+
 
     public function __construct()
     {
@@ -220,6 +224,18 @@ class Projects
     public function removeCategory(Categories $category): static
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): static
+    {
+        $this->priority = $priority;
 
         return $this;
     }

@@ -5,15 +5,15 @@
 {% block body %}
 <div id="container" class="p-4 p-md-5 pt-5" onload="init()">
     <h2 class="mb-4">Tableau de bord</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        deserunt mollit anim id est laborum.</p>
+    <p></p>
+    <button onclick="getOrder(this)" class="btn btn-primary" data-href="{{path('app_remake_order')}}"
+        data-token="{{csrf_token('updateProjectsOrder')}}">Enregistrez
+        les
+        modifications</button>
     <hr>
     <div class="row" id="dragparent">
         {% for project in projects %}
-        <div class="card dragthing" style="width: 18rem;">
+        <div class="card dragthing m-1" style="width: 18rem;" data-project-id="{{project.id}}">
             <img src="{{asset('uploads/thumbnails/' ~ project.projImage)}}" class="card-img-top"
                 alt="{{project.client}}">
             <div class="card-body pb-0">
@@ -46,12 +46,6 @@
                             #{{category.name}}
                             {% endfor %}
                         </li>
-                        <li>
-                            Période :
-                            <span>
-                                {{project.productionPeriod|format_datetime('long','none', 'MMMM Y') | capitalize}}
-                            </span>
-                        </li>
                     </ul>
                     <p class="text-muted tag">
                         {{project.description |slice(0, 75) ~ (project.description|length > 75 ? '...' : '')}}
@@ -74,12 +68,6 @@
     </div>
 </div>
 {% block javascripts %}
-    <script>
-        dragparent = document.getElementById('dragparent');
-        function init() {
-            dragula([dragparent])
-        }
-        init();
-    </script>
+<script src="{{asset('admin/js/drag.js')}}"></script>
 {% endblock %}
 {% endblock %}
