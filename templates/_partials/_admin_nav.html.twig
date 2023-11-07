@@ -5,25 +5,17 @@
             <span class="nav_logo-name">ak58graph</span>
         </a>
         <div class="nav_list">
-            <a href="{{path('app_admin')}}" class="nav_link active">
+            <a href="{{path('app_admin')}}" class="nav_link {% if app.current_route == 'app_admin' %}active{% endif %}">
                 <i class="bx bx-grid-alt nav_icon"></i>
                 <span class="nav_name">Dashboard</span>
             </a>
-            <a href="{{path('app_admin_projects')}}" class="nav_link">
+            <a href="{{path('app_admin_projects')}}" class="nav_link {% if app.current_route == 'app_admin_projects' or app.current_route == 'app_admin_edit_projects' %}active{% endif %}">
                 <i class='bx bxs-briefcase'></i>
                 <span class="nav_name">Projets</span>
             </a>
-            <a href="{{path('app_tags')}}" class="nav_link">
+            <a href="{{path('app_tags')}}" class="nav_link {% if app.current_route == 'app_tags' %}active{% endif %}">
                 <i class="bx bx-bookmark nav_icon"></i>
                 <span class="nav_name">Tags</span>
-            </a>
-            <a href="#" class="nav_link">
-                <i class="bx bx-message-square-detail nav_icon"></i>
-                <span class="nav_name">Messages</span>
-            </a>
-            <a href="#" class="nav_link">
-                <i class="bx bx-folder nav_icon"></i>
-                <span class="nav_name">Files</span>
             </a>
             <a href="#" class="nav_link">
                 <i class="bx bx-bar-chart-alt-2 nav_icon"></i>

@@ -4,9 +4,9 @@
 
 {% block body %}
 
-{% set showForm = "d-none" %}
+{% set showForm = "visible" %}
 {% if app.current_route == 'app_admin_projects' %}
-
+	{% set showForm = "invisible" %}
 {% endif %}
 
 
@@ -22,9 +22,11 @@
         Gestion des Projets
     </p>
     <div>
-        <button class="btn btn-primary" type="button" onclick="toggleAddProjectForm()">
+    	{% if app.current_route == 'app_admin_edit_projects' %}
+		<a class="btn btn-primary" type="button" href="{{path('app_admin_projects')}}"		>
             Ajoutez un projet
-        </button>
+        </a>
+		{% endif %}
         <a class="btn btn-primary" type="button" href="{{path('app_admin')}}">
             Tableau de bord
         </a>
@@ -35,7 +37,7 @@
     </div>
     {% endif %}
     <hr>
-    <div class="row justify-content-center {{showForm}}" id="addProject">
+    <div class="row justify-content-center" id="addProject">
         {% include "_partials/_admin_form.html.twig" %}
     </div>
 </div>
@@ -43,7 +45,7 @@
     function toggleAddProjectForm() {
         let projectForm = document.getElementById('addProject');
         console.log(projectForm);
-        projectForm.classList.toggle("d-none");
+        projectForm.classList.toggle("invisible");
     }
 </script>
 {% endblock %}
