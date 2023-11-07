@@ -6,9 +6,8 @@
 
 {% set showForm = "visible" %}
 {% if app.current_route == 'app_admin_projects' %}
-	{% set showForm = "invisible" %}
+{% set showForm = "invisible" %}
 {% endif %}
-
 
 <div id="container" class="px-4 px-md-5 py-0">
     <h2 class="mb-4">
@@ -22,11 +21,11 @@
         Gestion des Projets
     </p>
     <div>
-    	{% if app.current_route == 'app_admin_edit_projects' %}
-		<a class="btn btn-primary" type="button" href="{{path('app_admin_projects')}}"		>
+        {% if app.current_route == 'app_admin_edit_projects' %}
+        <a class="btn btn-primary" type="button" href="{{path('app_admin_projects')}}">
             Ajoutez un projet
         </a>
-		{% endif %}
+        {% endif %}
         <a class="btn btn-primary" type="button" href="{{path('app_admin')}}">
             Tableau de bord
         </a>
