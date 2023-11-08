@@ -3,19 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Projects;
-use App\Form\ContactTypeFormType;
-use App\Service\SendMailService;
+use App\Repository\ProjectsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AllProjectsController extends AbstractController
 {
     #[Route('/projects', name: 'app_projects')]
-    public function index(): Response
+    public function index(ProjectsRepository $projectsRepository): Response
     {
-        return $this->render('projects/index.html.twig');
+        $projects = $projectsRepository->findBy([], ['priority' => 'ASC']);
+        return $this->render('projects/index.html.twig', compact('projects'));
     }
 
     #[Route('/projects/{slug}', name: 'app_projects_details')]

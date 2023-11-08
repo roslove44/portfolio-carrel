@@ -60,7 +60,7 @@ class ProjectType extends AbstractType
                     'class' => 'form-textarea',
                     'rows' => 5,
                 ],
-                'required' => true,
+                'required' => false,
             ])
             ->add('proj_image', FileType::class, [
                 'multiple' => false,
