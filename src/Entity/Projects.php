@@ -47,7 +47,7 @@ class Projects
     private Collection $categories;
 
     #[ORM\GeneratedValue]
-    #[ORM\Column(unique: true)]
+    #[ORM\Column]
     private ?int $priority = null;
 
 

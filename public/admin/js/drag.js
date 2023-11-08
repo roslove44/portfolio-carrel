@@ -22,23 +22,22 @@ function getOrder(e) {
     alert("Aucun Changement à apporter.");
   } else if (confirm("Voulez-vous sauvegarder les changements ?")) {
     jsonIdOrder = JSON.stringify(idOrder);
-    fetch(this.getAttribute("data-href"), {
+    fetch(e.getAttribute("data-href"), {
       method: "PUT",
       headers: {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        _token: "updateProjectsOrder",
+        _token: e.dataset.token,
         _idOrder: jsonIdOrder,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          if (alert("Enregistrement effectué avec succès")) {
-            location.reload();
-          }
+          alert("Enregistrement effectué avec succès");
+          location.reload();
         } else {
           alert(data.error);
         }
