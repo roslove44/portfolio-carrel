@@ -4,13 +4,16 @@
 
 {% block body %}
 <div id="container" class="p-4 p-md-5 pt-5" onload="init()">
-    <h2 class="mb-4">Tableau de bord</h2>
-    <p></p>
-    <button onclick="getOrder(this)" class="btn btn-primary" data-href="{{path('app_remake_order')}}"
-        data-token="{{csrf_token('updateProjectsOrder')}}">Enregistrez
-        les
-        modifications</button>
-    <hr>
+    <div class="new-feed-onboarding-notice p-2 rounded-2">
+        <h2 class="mb-4">Tableau de bord</h2>
+        <p></p>
+        <button onclick="getOrder(this)" class="btn btn-primary" data-href="{{path('app_remake_order')}}"
+            data-token="{{csrf_token('updateProjectsOrder')}}">Enregistrez
+            les
+            modifications</button>
+        <hr>
+    </div>
+
     <div class="row" id="dragparent">
         {% for project in projects %}
         <div class="card dragthing m-1" style="width: 18rem;" data-project-id="{{project.id}}">

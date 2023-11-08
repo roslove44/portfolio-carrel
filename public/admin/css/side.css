@@ -187,3 +187,7 @@ a {
     font-size: smaller;
     font-style: italic;
 }
+
+.new-feed-onboarding-notice {
+    background: var(--light-grad-pink-blue, radial-gradient(ellipse at 40% 0%, #bf398910 0, transparent 75%), radial-gradient(ellipse at 60% 0%, #096bde10 0, transparent 75%));
+}
