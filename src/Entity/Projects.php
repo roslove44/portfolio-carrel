@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProjectsRepository::class)]
 class Projects
@@ -24,9 +25,6 @@ class Projects
 
     #[ORM\Column(length: 255)]
     private ?string $work_link = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
 
     #[ORM\Column(length: 255)]
     private ?string $proj_image = null;
@@ -49,6 +47,9 @@ class Projects
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $priority = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
 
     public function __construct()
@@ -95,18 +96,6 @@ class Projects
     public function setWorkLink(string $work_link): static
     {
         $this->work_link = $work_link;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -236,6 +225,18 @@ class Projects
     public function setPriority(int $priority): static
     {
         $this->priority = $priority;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
