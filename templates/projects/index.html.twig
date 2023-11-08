@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ak58graph{% endblock %}
-
+{% block title %}Projets ak58graph{% endblock %}
+{% block metaTitle %}Projets ak58graph{% endblock %}
 {% block body %}
 <!-- START HOME -->
 <section class="section header-bg-img h-10vh align-items-center d-flex pb-0">
@@ -12,7 +12,8 @@
                 <div class="header-content">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class=" text-white">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="{{path('app_main')}}" class=" text-white">Accueil</a>
+                            </li>
                             <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
                         </ol>
                     </nav>
@@ -56,125 +57,7 @@
     </div>
     <div class="container">
         <div class="row mt-4 work-filter">
-            <div class="col-lg-4 work_item entreprises ui">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/1.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 work_item evenements organisme ui">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/2.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 work_item organisme ui">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/3.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 work_item entreprises ui evenement">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/4.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 work_item ui organisme">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/5.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 work_item devlopment webdesign">
-                <a href="" class="img-zoom">
-                    <div class="work_box">
-                        <div class="work_img">
-                            <img src="{{asset('assets/images/works/6.jpg')}}" class="img-fluid mx-auto d-block rounded"
-                                alt="work-img">
-                        </div>
-                        <div class="work_detail">
-                            <p class="mb-2">Category</p>
-                            <p>
-                                <a href="portfolio-details.html" title="Plus de détail">
-                                    <i class="mbri-paperclip"></i>
-                                </a>
-                            </p>
-                            <h4 class="mb-0">Project Title</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% include '_partials/_show_project.html.twig' %}
         </div>
     </div>
 </section>

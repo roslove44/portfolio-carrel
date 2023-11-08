@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Tags;
+use App\Form\TagFormType;
+use App\Repository\CategoriesRepository;
 use App\Repository\TagsRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,8 +18,36 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted("ROLE_ADMIN")]
 class TagsController extends AbstractController
 {
+    #[Route('admin/tags/', name: 'app_tags')]
+    public function Tags(TagsRepository $tagsRepository, CategoriesRepository $categoriesRepository, Request $request, EntityManagerInterface $em): Response
+    {
+        $tag = new Tags;
+        $form = $this->createForm(TagFormType::class, $tag);
+        $form->handleRequest($request);
+        $showForm = false;
+
+        if ($form->isSubmitted()) {
+            if (!$form->isValid()) {
+                $showForm = true;
+            } else {
+                $tag->setName(strtolower($tag->getName()));
+                $em->persist($tag);
+                $em->flush();
+
+                $this->addFlash("success", "Tag ajouté avec succès");
+                return $this->redirectToRoute('app_tags');
+            }
+        }
+
+        $tagForm = $form->createView();
+        $categories = $categoriesRepository->findBy([], ['id' => 'ASC']);
+        $tags = $tagsRepository->findBy([], ['id' => 'ASC']);
+
+        return $this->render('admin/tags.html.twig', compact('tags', 'tagForm', 'showForm', 'categories'));
+    }
+
     #[Route('admin/tags/add/ajax/{label}', name: 'app_admin_tags', methods: ["POST"])]
-    public function addTagsAjax($label, EntityManagerInterface $em): JsonResponse
+    public function addTagsAjaxSelect2($label, EntityManagerInterface $em): JsonResponse
     {
         try {
             $tag = new Tags();
@@ -44,17 +74,18 @@ class TagsController extends AbstractController
         }
     }
 
-    #[Route('admin/tags/', name: 'app_tags')]
-    public function addTags(TagsRepository $tagsRepository): Response
+    #[Route('admin/tags/delete/{id}', name: 'app_delete_tags', methods: ['DELETE'])]
+    public function deleteTags(Tags $tag, EntityManagerInterface $em, Request $request): JsonResponse
     {
-        $tags = $tagsRepository->findBy([], ['id' => 'ASC']);
-        return $this->render('admin/tags.html.twig', compact('tags'));
-    }
+        $data = json_decode($request->getContent(), true);
+        if ($this->isCsrfTokenValid('delete' . $tag->getId(), $data['_token'])) {
+            // Le token csrf est valide
+            $em->remove($tag);
+            $em->flush();
+            return new JsonResponse(['success' => true], 200);
+        }
 
-    #[Route('admin/tags/delete/', name: 'app_delete_tags')]
-    public function deleteTags(TagsRepository $tagsRepository): Response
-    {
-        return $this->render('admin/tags.html.twig');
+        return new JsonResponse(['error' => 'Token Invalide !']);
     }
 
     #[Route('admin/tags/edit/{id}', name: 'app_edit_tags', methods: ['PUT'])]
@@ -70,7 +101,7 @@ class TagsController extends AbstractController
                 $em->flush();
                 return new JsonResponse(['success' => true], 200);
             }
-            return new JsonResponse(['error' => 'Erreur de suppression !']);
+            return new JsonResponse(['error' => 'Erreur de modification !']);
         }
 
         return new JsonResponse(['error' => 'Token Invalide !']);

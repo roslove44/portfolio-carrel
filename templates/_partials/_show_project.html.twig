@@ -1,0 +1,21 @@
+{% for project in projects %}
+<div class="col-lg-4 work_item {% for category in project.categories %}{{category.name}} {% endfor %}">
+    <a href="{{path('app_projects_details', {slug : project.slug})}}" class="img-zoom">
+        <div class="work_box">
+            <div class="work_img">
+                <img src="{{(asset('uploads/thumbnails/') ~ project.projImage) | imagine_filter('my_thumbs')}}"
+                    class="img-fluid mx-auto d-block rounded" alt="work-img">
+            </div>
+            <div class="work_detail">
+                <p class="mb-2">{{project.achievement}}</p>
+                <p>
+                    <a href="{{path('app_projects_details', {slug : project.slug})}}" title="Plus de détails">
+                        <i class="mbri-paperclip"></i>
+                    </a>
+                </p>
+                <h4 class="mb-0"> {{project.client}} </h4>
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}

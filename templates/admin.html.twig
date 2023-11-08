@@ -1,12 +1,12 @@
+<!DOCTYPE html>
 <html lang="fr-FR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}ak58graph{% endblock %}</title>
-    <meta name="description" content="Premium Responsive Bootstrap 5 Personal Template" />
-    <meta name="keywords" content="bootstrap 5, premium, cv, personal, Portfolio, multipurpose" />
-    <meta name="author" content="Rost Digital Services" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>{% block title %}ak58graph | Carrel AKODANDE{% endblock %}</title>
+    <meta name="author" content="Rost Digital Services (Rostand MIGAN)" />
     <link rel="icon" href="{{asset('assets/images/favicon.png')}}">
     {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('admin/css/side.css')}}">
     {% endblock %}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
@@ -44,8 +45,9 @@
         crossorigin="anonymous"></script>
     <script src="{{asset('admin/js/side.js')}}"></script>
     <script src="{{asset('admin/js/images.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.js"></script>
     <script>
-        // In your Javascript (external .js resource or <script> tag)
+        // Gestion sélection multiple Tags
         $(document).ready(function () {
             $('.select-tags').select2({
                 tags: true,
@@ -80,6 +82,15 @@
                     })
                 }
             });
+        });
+    </script>
+    <script>
+        // Gestion de la sélection multiple : Categories
+        $(document).ready(function () {
+            $('.categories-tags').select2({
+                tags: true,
+                tokenSeparators: [' ',],
+            })
         });
     </script>
     {% block javascripts %}

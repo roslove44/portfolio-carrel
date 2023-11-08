@@ -6,7 +6,7 @@
         <small id="clientHelp" class="form-text text-muted">&#8627; Bénéficiaire du projet</small>
     </div>
     <div class="mb-3">
-        <label>Catégorie</label>
+        <label>Réalisation</label>
         {{form_widget(addProject.achievement)}}
         <small id="categoryHelp" class="form-text text-muted">&#8627; Ex : Web design</small>
     </div>
@@ -59,6 +59,10 @@
     <div class=" mb-3">
         <label>Tags</label>
         {{form_widget(addProject.tags)}}
+    </div>
+    <div class=" mb-3">
+        <label>Categories</label>
+        {{form_widget(addProject.categories)}}
     </div>
 
     <button type="submit" class="btn btn-secondary w-100">

@@ -4,8 +4,32 @@
 
 {% block body %}
 <div id="container" class="px-4 px-md-5 py-0 bg-white">
-    <h2 class="mb-4">Tags</h2>
-    <p>Gestion des Tags</p>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">Tags</h2>
+            <p>Gestion des Tags</p>
+        </div>
+        <div class="col-12">
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addTargetForm"
+                    aria-expanded="false" aria-controls="addTargetForm">
+                    Ajoutez un tag
+                </button>
+            </p>
+            <div class="collapse w-100 {%if(showForm)%}show{% endif %}" id="addTargetForm">
+                <div class="card card-body">
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        {{form_start(tagForm)}}
+                        {{form_row(tagForm.name)}}
+                        <div id="tagHelp" class="form-text" style="margin-top: -10px;">Exemple : flyers, logo, design,
+                            webDesign</div>
+                        <button type="submit" class="btn btn-primary btn-lg my-2">Ajoutez</button>
+                        {{form_end(tagForm)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-xl-4 col-lg-6 col-12">
@@ -15,50 +39,31 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tags</th>
-                            <td></td>
                             <th scope="col">Projets</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% if tags|length > 0 %}
                         {% for tag in tags %}
                         <tr>
-                            <td scope="row"> {{tag.id}} </td>
+                            <td scope="row"> {{loop.index}} </td>
                             <td data-editTag="{{tag.id}}" class="align-self-center m-1" style="caret-color: red;"
-                                data-href="{{path('app_edit_tags', {id: tag.id})}}" data-token="
-                                {{csrf_token('update' ~ tag.id)}}">
+                                data-href="{{path('app_edit_tags', {id: tag.id})}}"
+                                data-token="{{csrf_token('update' ~ tag.id)}}">
                                 {{tag.name}}
                             </td>
-                            <td></td>
                             <td>
-                                <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="heading{{tag.id}}">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse{{tag.id}}" aria-expanded="true"
-                                                aria-controls="collapse{{tag.id}}">
-                                                Liste des projets Affectés
-                                            </button>
-                                        </h2>
-                                        <div id="collapse{{tag.id}}" class="accordion-collapse collapse"
-                                            aria-labelledby="heading{{tag.id}}" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <ol class="list-group">
-                                                    {% for project in tag.projects %}
-                                                    {% if project is not empty %}
-                                                    <li>
-                                                        {{ project.slug }}
-                                                    </li>
-                                                    {% endif %}
-                                                    {% endfor %}
-                                                </ol>
-                                                {% if tag.projects is empty %}
-                                                <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté
-                                                </div>
-                                                {% endif %}
-                                            </div>
-                                        </div>
+                                <div class="tag">
+                                    {% for project in tag.projects %}
+                                    {% if project is not empty %}
+                                    #{{ project.slug }}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if tag.projects is empty %}
+                                    <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté
                                     </div>
+                                    {% endif %}
                                 </div>
                             </td>
                             <td>
@@ -66,16 +71,87 @@
                                     onclick="editTag(this, target)">
                                     <i class='bx bx-edit'></i>
                                 </a>
-                                <a href="" class="badge bg-danger" title="Supprimer le tag"> <i
-                                        class='bx bx-trash'></i></a>
+                                <a class="badge bg-danger" title="Supprimer le tag"
+                                    data-href="{{path('app_delete_tags', {id: tag.id})}}"
+                                    data-token="{{csrf_token('delete' ~ tag.id)}}" onclick="deleteTag(this)">
+                                    <i class='bx bx-trash'></i>
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-secondary">
+                                    Aucun Tag
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-6 col-12">
+    </div>
+</div>
+
+<div id="container" class="px-4 px-md-5 py-3 bg-white">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">Catégories</h2>
+            <p>Gestion des Catégories</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Catégories</th>
+                            <th scope="col">Projets</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if categories|length > 0 %}
+                        {% for category in categories %}
+                        <tr>
+                            <td scope="row"> {{loop.index}} </td>
+                            <td class="align-self-center m-1" style="caret-color: red;">
+                                {{category.name}}
+                            </td>
+                            <td>
+                                <div class="tag">
+                                    {% for project in category.projects %}
+                                    {% if project is not empty %}
+                                    #{{ project.slug }}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if category.projects is empty %}
+                                    <div class="badge rounded-pill bg-secondary w-100">Aucun projet affecté
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-secondary">
+                                    Aucune Catégorie
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
