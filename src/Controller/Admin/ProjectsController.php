@@ -50,7 +50,7 @@ class ProjectsController extends AbstractController
             // Project update
             // Upload image de présentation
             $proj_image = $form->get('proj_image')->getData();
-            $proj_image = $picturesService->add($proj_image, 'thumbnails', width: 400, height: 266.5);
+            $proj_image = $picturesService->add($proj_image, 'thumbnails');
             $project->setSlug($slug);
             $project->setProjImage($proj_image);
             $project->setPriority(1);
