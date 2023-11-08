@@ -14,8 +14,8 @@
     <div class="row" id="dragparent">
         {% for project in projects %}
         <div class="card dragthing m-1" style="width: 18rem;" data-project-id="{{project.id}}">
-            <img src="{{asset('uploads/thumbnails/' ~ project.projImage)}}" class="card-img-top"
-                alt="{{project.client}}">
+            <img src="{{asset('uploads/thumbnails/' ~ project.projImage) | imagine_filter('my_thumbs')}}"
+                class="card-img-top" alt="{{project.client}}">
             <div class="card-body pb-0">
                 <h5 class="card-title text-center">
                     {{project.client}}

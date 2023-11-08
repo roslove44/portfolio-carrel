@@ -3,7 +3,7 @@
     <a href="{{path('app_projects_details', {slug : project.slug})}}" class="img-zoom">
         <div class="work_box">
             <div class="work_img">
-                <img src="{{asset('uploads/thumbnails/') ~ project.projImage}}"
+                <img src="{{(asset('uploads/thumbnails/') ~ project.projImage) | imagine_filter('my_thumbs')}}"
                     class="img-fluid mx-auto d-block rounded" alt="work-img">
             </div>
             <div class="work_detail">

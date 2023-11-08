@@ -29,21 +29,8 @@
 <!-- START WORK -->
 <section class="section" id="portfolio" data-turn-bg-secondary>
     <div class="container">
-        <div class="row gy-4">
-            <div class="col-lg-8">
-                <div class="portfolio-details-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-                        {% for image in project.images %}
-                        <div class="swiper-slide">
-                            <img src="{{ asset('uploads/projects/' ~ image.fileSrc) }}" alt="{{image.name}}"
-                                class="rounded-2">
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <div class="col-lg-4">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-12">
                 <div class="portfolio-info rounded-2">
                     <h3 data-turn-text-white>Informations sur le Projet</h3>
                     <ul data-turn-text-white>
@@ -75,6 +62,20 @@
                     </p>
                 </div>
             </div>
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        {% for image in project.images %}
+                        <div class="swiper-slide">
+                            <img src="{{ asset('uploads/projects/' ~ image.fileSrc) | imagine_filter('my_projects')}}"
+                                alt="{{image.name}}" class="rounded-2">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
