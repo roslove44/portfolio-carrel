@@ -15,4 +15,4 @@ liip_imagine:
     my_projects:
       quality: 75
       filters:
-        resize: { size: [700, 800], mode: outbound }
+        resize: { size: [800, 600], mode: outbound }

@@ -49,8 +49,8 @@
                         <tr>
                             <td scope="row"> {{loop.index}} </td>
                             <td data-editTag="{{tag.id}}" class="align-self-center m-1" style="caret-color: red;"
-                                data-href="{{path('app_edit_tags', {id: tag.id})}}" data-token="
-                                                                            {{csrf_token('update' ~ tag.id)}}">
+                                data-href="{{path('app_edit_tags', {id: tag.id})}}"
+                                data-token="{{csrf_token('update' ~ tag.id)}}">
                                 {{tag.name}}
                             </td>
                             <td>

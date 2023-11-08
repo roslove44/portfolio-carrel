@@ -29,7 +29,7 @@ class Projects
     #[ORM\Column(length: 255)]
     private ?string $proj_image = null;
 
-    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Images::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'projects')]
@@ -44,8 +44,7 @@ class Projects
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'projects')]
     private Collection $categories;
 
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(options: ["unsigned"])]
     private ?int $priority = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

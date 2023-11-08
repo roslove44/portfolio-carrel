@@ -44,3 +44,27 @@ function getOrder(e) {
       });
   }
 }
+
+function deleteProject(e) {
+  if (confirm(`Voulez-vous supprimer le projet : ` + e.dataset.slug + "?")) {
+    fetch(e.getAttribute("data-href"), {
+      method: "DELETE",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _token: e.dataset.token,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Projet" + e.dataset.slug + "supprimé avec succès");
+          location.reload();
+        } else {
+          alert(data.error);
+        }
+      });
+  }
+}

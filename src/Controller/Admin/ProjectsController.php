@@ -53,9 +53,11 @@ class ProjectsController extends AbstractController
             $proj_image = $picturesService->add($proj_image, 'thumbnails', width: 400, height: 266.5);
             $project->setSlug($slug);
             $project->setProjImage($proj_image);
+            $project->setPriority(1);
 
             $em->persist($project);
             $em->flush();
+
 
             $name = $project->getClient();
 

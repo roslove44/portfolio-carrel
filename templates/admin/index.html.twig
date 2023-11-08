@@ -53,8 +53,12 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-around">
-                <a href="" class="badge bg-danger" title="Supprimer"> <i class='bx bx-trash'></i></a>
-                <a href="{{path('app_admin_edit_projects', {slug: project.slug})}}" class="badge bg-dark"
+                <a class="badge bg-danger" title="Supprimer" onclick="deleteProject(this)" data-slug="{{project.slug}}"
+                    data-token="{{csrf_token('delete' ~ project.id)}}"
+                    data-href="{{path('app_delete_project', {slug: project.slug})}}">
+                    <i class='bx bx-trash'></i>
+                </a>
+                <a href=" {{path('app_admin_edit_projects', {slug: project.slug})}}" class="badge bg-dark"
                     title="Modifier">
                     <i class='bx bx-edit'></i>
                 </a>
