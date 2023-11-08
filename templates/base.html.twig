@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr-FR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}ak58graph{% endblock %}</title>
-    <meta name="description" content="Premium Responsive Bootstrap 5 Personal Template" />
-    <meta name="keywords" content="bootstrap 5, premium, cv, personal, Portfolio, multipurpose" />
-    <meta name="author" content="Rost Digital Services" />
+    <title>{% block title %}ak58graph | Carrel AKODANDE{% endblock %}</title>
+    <meta name="description"
+        content="Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques." />
+    <meta name="keywords"
+        content="graphiste freelance, conception graphique, illustrations artistiques, web design, graphiste, illustrateur, Carrel AKODANDE, ak58graph" />
+    <meta name="author" content="Rostand MIGAN (Rost Digital Services)" />
+    <meta property="og:title" content="{% block metaTitle %}ak58graph | Carrel AKODANDE{% endblock %}">
+    <meta property="og:description"
+        content="Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques.">
+    <meta property="og:image" content="{% block metaImage %}{{ asset('assets/images/about.png') }}{% endblock %}" />
+
     <link rel="icon" href="{{asset('assets/images/favicon.png')}}">
     {% block stylesheets %}
     <!-- Bootstrap Css -->
