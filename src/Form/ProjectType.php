@@ -52,7 +52,7 @@ class ProjectType extends AbstractType
                     'class' => 'form-control',
                     'aria-describedby' => 'work_linkHelp',
                 ],
-                'required' => true,
+                'required' => false,
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
@@ -65,7 +65,7 @@ class ProjectType extends AbstractType
             ->add('proj_image', FileType::class, [
                 'multiple' => false,
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'mimeTypes' => [

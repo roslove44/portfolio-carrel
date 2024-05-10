@@ -23,7 +23,7 @@ class Projects
     #[ORM\Column]
     private ?\DateTimeImmutable $productionPeriod = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $work_link = null;
 
     #[ORM\Column(length: 255)]

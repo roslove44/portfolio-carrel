@@ -17,7 +17,7 @@ class AllProjectsController extends AbstractController
         return $this->render('projects/index.html.twig', compact('projects'));
     }
 
-    #[Route('/projet/{slug}', name: 'app_projects_details')]
+    #[Route('/projets/{slug}', name: 'app_projects_details')]
     public function bySlug(Projects $project): Response
     {
         return $this->render('projects/bySlug.html.twig', compact('project'));
