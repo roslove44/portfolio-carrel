@@ -20,12 +20,12 @@
     {% block OpenGraph %}
     <meta property="og:title" content="{% block metaTitle %}ak58graph | Carrel AKODANDE{% endblock %}">
     <meta property="og:description"
-        content="Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques.">
-    <meta property="og:image" content="{{ absolute_url(asset('assets/images/about.png')) }}" />
+        content="{% block metaDescription %}Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques.{% endblock %}">
+    <meta property="og:image"
+        content="{% block metaImage %}{{ absolute_url(asset('assets/images/about.png')) }}{% endblock %}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ak58graph" />
-    <meta property="og:url" content="{{ path('app_main') }}" />
-    <meta property="og:image:secure_url" content="{{ absolute_url(asset('assets/images/about.png')) }}" />
+    <meta property="og:url" content="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}" />
     <meta property="og:image:alt" content="Graphiste Freelance ak58graph" />
     <meta property="og:locale" content="fr-FR" />
     {% endblock %}
@@ -133,7 +133,7 @@
         const date = new Date();
         currentYear = date.getFullYear();
         const copyright = document.getElementById("copyright");
-        copyright.innerText = currentYear + " Réalisé par Rost Digital Services"
+        copyright.innerText = currentYear + " Réalisé par Rostand MIGAN"
     </script>
 </body>
 
