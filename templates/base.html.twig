@@ -5,17 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}ak58graph | Carrel AKODANDE{% endblock %}</title>
+    <meta name="author" content="Rostand MIGAN (Rost Digital Services)" />
+
+    {% block description %}
     <meta name="description"
         content="Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques." />
+    {% endblock %}
+
+    {% block keywords %}
     <meta name="keywords"
         content="graphiste freelance, conception graphique, illustrations artistiques, web design, graphiste, illustrateur, Carrel AKODANDE, ak58graph" />
-    <meta name="author" content="Rostand MIGAN (Rost Digital Services)" />
+    {%endblock %}
+
+    {% block OpenGraph %}
     <meta property="og:title" content="{% block metaTitle %}ak58graph | Carrel AKODANDE{% endblock %}">
     <meta property="og:description"
         content="Découvrez le portfolio du graphiste freelance ak58graph. Des designs créatifs et personnalisés pour vos projets artistiques.">
-    <meta property="og:image" content="{% block metaImage %}{{ asset('assets/images/about.png') }}{% endblock %}" />
+    <meta property="og:image" content="{{ absolute_url(asset('assets/images/about.png')) }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ak58graph" />
+    <meta property="og:url" content="{{ path('app_main') }}" />
+    <meta property="og:image:secure_url" content="{{ absolute_url(asset('assets/images/about.png')) }}" />
+    <meta property="og:image:alt" content="Graphiste Freelance ak58graph" />
+    <meta property="og:locale" content="fr-FR" />
+    {% endblock %}
+
+    {% block canonical %}
+    <link rel="canonical" href="{{ url(app.request.get('_route'), app.request.get('_route_params')) }}">
+    {% endblock %}
 
     <link rel="icon" href="{{asset('assets/images/favicon.png')}}">
+
     {% block stylesheets %}
     <!-- Bootstrap Css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
